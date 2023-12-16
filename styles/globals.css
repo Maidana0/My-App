@@ -38,7 +38,7 @@ header {
 }
 
 main {
-    min-height: 75vh;
+   min-height: 83vh;
 }
 
 footer {
@@ -76,10 +76,16 @@ footer small:hover {
     justify-content: center;
 }
 
+.header{
+    width: 100%;
+    justify-content: space-evenly;
+    padding: 0 1rem;
+}
+
 .title-contain {
     margin: 1rem auto;
-    width: 60%;
-    padding: 0.5rem;
+    width: fit-content;
+    padding: 0.5rem 1.5rem;
     background-color: black;
     color: white;
     border-radius: 25px;
@@ -88,7 +94,7 @@ footer small:hover {
     box-shadow: 0 0 12px 2px black;
 }
 
-.title {
+.title-contain h1 {
     font-size: 3rem;
     font-weight: 700;
 }
@@ -103,9 +109,9 @@ footer small:hover {
 }
 
 @media (max-width: 400px) {
-    .contain {
+    /* .contain {
         width: max-content;
-    }
+    } */
 }
 
 

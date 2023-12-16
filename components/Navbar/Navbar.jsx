@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { HamburgerBtn, NavItems } from './Components'
 
-const paths = ['calendario', 'horarios', 'objetivos', 'tareas']
+const paths = ['agenda','calendario', 'horarios']
 
 export default function Navbar({ font }) {
 

@@ -1,6 +1,6 @@
 import styles from "@/styles/Horarios.module.css"
 import { amatic } from "../layout"
-import State from "@/components/horarios/State"
+import HorariosPage from "@/components/horarios/HorariosPage"
 export const metadata = { title: "Horarios" }
 
 // POSTERIORMENTE TENGO QUE PONER UNA BASE DE DATOS PARA CADA USUARIO
@@ -16,10 +16,10 @@ const hours = [
     '19:00 a 21:00', '21:00 a 23:00'
 ];
 
-export default function HorariosPage() {
+export default function Horarios() {
     return (
 
-        <State font={amatic.className} styles={styles} days={weekDays} hours={hours} />
+        <HorariosPage font={amatic.className} styles={styles} days={weekDays} hours={hours} />
 
     )
 }

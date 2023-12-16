@@ -1,3 +1,4 @@
+import CalendarioPage from "@/components/calendario/CalendarioPage"
 
 export const metadata = {
     title: "Calendario"
@@ -5,8 +6,7 @@ export const metadata = {
 
 export default function Calendario() {
     return (
-        <div>
-        </div>
+        <CalendarioPage />
     )
 }
 
