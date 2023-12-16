@@ -1,0 +1,99 @@
+.app {
+    padding: 0 1.5rem;
+    gap: 10px
+}
+
+.navbar {
+    padding-right: 1rem;
+    font-size: 1.6em;
+}
+
+.nav_items {
+    flex-direction: row;
+    gap: 10px;
+}
+
+.nav_links {
+    position: relative;
+    padding: 0 1rem;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+}
+
+.nav_links::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: yellow;
+    z-index: 1;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s ease-in-out;
+}
+
+.active {
+    color: yellow
+}
+
+.nav_links:hover::before {
+    transform: scaleX(1);
+}
+
+@media (max-width: 785px) {
+
+    .navbar {
+        transition: ease 0.4s;
+        position: fixed;
+        right: -100vh;
+        top: 3rem;
+        bottom: 0;
+        opacity: 0;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 0;
+    }
+
+    .nav_items {
+        padding-top: 1.5rem;
+        flex-direction: column;
+        width: 75%;
+        border-radius: 3% 0 0 30%;
+        box-shadow: -15px 1px 20px 1px rgba(161, 161, 1, 0.616);
+
+        background-color: rgba(0, 0, 0, 0.9);
+        background-image: url('/images/luffy.png');
+        background-size: 50%;
+        background-position: 50% 80%;
+        background-repeat: no-repeat;
+    }
+
+    .nav_links {
+        font-size: 1.5em;
+        min-width: 60%;
+    }
+}
+
+
+.nav_active {
+    opacity: 1;
+    right: 0;
+    transition: all ease 0.5s;
+}
+
+@media (min-width: 785px) {
+    .nav_btn {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .nav_items {
+        background-size: contain
+    }
+}
