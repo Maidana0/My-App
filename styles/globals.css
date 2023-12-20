@@ -8,7 +8,6 @@ html,
 body {
     max-width: 100vw;
     min-height: 100vh;
-    /* overflow: hidden; */
 }
 
 body {
@@ -22,6 +21,10 @@ body {
     justify-content: space-between;
 }
 
+button {
+    border-style: none;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -32,13 +35,16 @@ li {
 }
 
 header {
+    position: fixed;
     justify-content: space-between;
     height: 3rem;
-    position: sticky;
+    width: 100%;
+    z-index: 100;
 }
 
 main {
-   min-height: 83vh;
+    margin-top: 3rem;
+    min-height: 83vh;
 }
 
 footer {
@@ -55,10 +61,12 @@ footer small:hover {
     color: white;
     background-color: #000000d9
 }
-.bg-w{
+
+.bg-w {
     color: black;
     background-color: cornsilk;
 }
+
 .d-flex {
     display: flex;
     align-items: center;
@@ -76,7 +84,7 @@ footer small:hover {
     justify-content: center;
 }
 
-.header{
+.header {
     width: 100%;
     justify-content: space-evenly;
     padding: 0 1rem;
@@ -99,13 +107,88 @@ footer small:hover {
     font-weight: 700;
 }
 
-.btn{
+.btn {
     padding: 1rem;
-    border-style: none;
     border-radius: 20px;
     font-weight: 500;
     font-size: 1.1rem;
     width: 100px;
+}
+
+.icon-bg-b {
+    background-color: black;
+    color: white;
+}
+
+.icon-bg-w {
+    background-color: white;
+    color: black;
+}
+
+.btn-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    font-size: 2em;
+    border: solid 2px;
+    cursor: pointer;
+}
+
+.btn-calender {
+    transition: all 0.5s;
+}
+
+.btn-calender:hover {
+    background-color: black;
+    color: white;
+}
+
+.btn-close {
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 2.8em;
+    transition: all 0.5s;
+    ;
+    background-color: yellow;
+    color: black;
+    padding: 1px;
+    cursor: pointer;
+}
+
+.btn-close:hover {
+    scale: 1.1;
+    background-color: black;
+    color: yellow;
+}
+
+.modal-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 101;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.form-calender {
+    height: 300px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+    
+    background-color: red;
+
+
 }
 
 @media (max-width: 400px) {
@@ -126,6 +209,6 @@ footer small:hover {
 
 *::-webkit-scrollbar-thumb {
     background-color: yellow;
-    ;
+
     border-radius: 5px;
 }
