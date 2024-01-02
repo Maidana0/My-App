@@ -8,23 +8,38 @@ import esLocale from '@fullcalendar/core/locales/es';
 import googleCalendarPlugin from '@fullcalendar/google-calendar';
 import listPlugin from '@fullcalendar/list';
 import interactionPluggin from '@fullcalendar/interaction'
+
+import { Suspense, useState } from "react";
 import Modal from "./Modal";
 
 
-const events = [
-    { title: 'Ahora', start: '2023-12-19T12:10:50' },
-]
+const events = {
+    events: [
+        {
+            title: 'Ahora',
+            start: Date.now()
+        },
+        {
+            title: 'Event2',
+            start: '2023-12-21'
+        }
+    ],
+    color: 'yellow',   // an option!
+    textColor: 'black' // an option!
+}
 const googleEvents = [
     {
         googleCalendarId: "es.ar#holiday@group.v.calendar.google.com",
         className: 'google-events',
+        color: 'red', textColor: 'white'
     },
     {
         googleCalendarId: 'woldehtes@gmail.com',
-        className: 'personal-events'
+        className: 'personal-events',
+        color: "green"
     }
 ]
-export function DemoApp() {
+export function DemoApp({ dateStr, modal }) {
     return (
         <div>
             <FullCalendar
@@ -55,6 +70,8 @@ export function DemoApp() {
 
 
                 dateClick={(e) => {
+                    dateStr.setDate(e.dateStr)
+                    modal.setModal(!modal.modal)
                     console.log(e)
                 }}
 
@@ -90,17 +107,30 @@ import { FaRegCalendarPlus } from "react-icons/fa6";
 
 
 const CalendarioPage = () => {
+    const [modal, setModal] = useState(false)
+    const [date, setDate] = useState(false)
     return (
         <>
             <Header title='Mi Calendario'>
                 <button className={`btn-calender btn-icon`}
-                    // onClick={handleClick}
-                    >
+                    onClick={() => setModal(!modal)}>
                     <FaRegCalendarPlus title="Agregar Evento" />
                 </button>
             </Header>
-            <DemoApp />
-            {/* <Modal /> */}
+            <Suspense fallback={<p>Cargando...</p>}>
+                <DemoApp
+                    dateStr={{ date, setDate }}
+                    modal={{ modal, setModal }}
+                />
+            </Suspense>
+
+
+            {
+                modal ?
+                    <Modal
+                        dateStr={date} modal={{ modal, setModal }} />
+                    : ''
+            }
         </>
     )
 }

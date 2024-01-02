@@ -1,5 +1,5 @@
 import CalendarioPage from "@/components/calendario/CalendarioPage"
-import "@/styles/fullCalender.styles.css"
+import "@/styles/calendar/globals.styles.css"
 
 export const metadata = {
     title: "Calendario"

@@ -1,4 +1,3 @@
-export const today = new Date().getDay() - 2;
 
 const data = Object.freeze(
     {

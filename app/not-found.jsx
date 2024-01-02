@@ -8,13 +8,13 @@ export const metadata = {
 
 export default function NotFound() {
     return (
-        <div className="contain d-flex bg-d f-column-center">
+        <div style={{margin:"4rem auto", padding:"1rem 0", width:"350px"}} className="d-flex bg-d f-column-center">
             <h1>404</h1>
             <Image
                 priority
                 src={'/error.gif'}
-                width={350}
-                height={300}
+                width={320}
+                height={280}
                 style={{ objectFit: "contain" }}
                 alt="Error"
             />

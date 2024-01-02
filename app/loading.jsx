@@ -20,8 +20,8 @@ export default function Loading() {
                 priority
                 src={'/loading.gif'}
                 width={119}
-                height={140} a
-                lt="loading" />
+                height={140}
+                alt="loading" />
 
             <h2 className={amatic.className}>
                 Cargando...

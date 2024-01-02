@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
 import data from "./data";
-import { today } from "./data";
+import { today } from "../utils";
 
 const ResponsiveTable = (props) => {
     const [scheduleUser, setScheduleUser] = useState(data);

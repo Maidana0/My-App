@@ -137,59 +137,8 @@ footer small:hover {
     cursor: pointer;
 }
 
-.btn-calender {
-    transition: all 0.5s;
-}
-
-.btn-calender:hover {
-    background-color: black;
-    color: white;
-}
-
-.btn-close {
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    font-size: 2.8em;
-    transition: all 0.5s;
-    ;
-    background-color: yellow;
-    color: black;
-    padding: 1px;
-    cursor: pointer;
-}
-
-.btn-close:hover {
-    scale: 1.1;
-    background-color: black;
-    color: yellow;
-}
-
-.modal-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    z-index: 101;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.form-calender {
-    height: 300px;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: auto;
-    
-    background-color: red;
 
 
-}
 
 @media (max-width: 400px) {
     /* .contain {
@@ -201,14 +150,34 @@ footer small:hover {
 *::-webkit-scrollbar {
     width: 5px;
     height: 5px;
+    scroll-behavior: smooth;
 }
 
 *::-webkit-scrollbar-track {
     background: #000000d9;
 }
 
+
 *::-webkit-scrollbar-thumb {
     background-color: yellow;
 
     border-radius: 5px;
+}
+
+
+
+textarea::-webkit-scrollbar-track,
+p::-webkit-scrollbar-track {
+    background: inherit;
+
+}
+
+textarea::-webkit-scrollbar-thumb,
+p::-webkit-scrollbar-thumb {
+    background-color: #5c5757
+}
+textarea::-webkit-scrollbar,
+p::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
 }

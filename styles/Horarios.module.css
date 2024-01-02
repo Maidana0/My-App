@@ -1,7 +1,7 @@
 
 .table_contain {
     width: 99%;
-    margin: 1rem auto;
+    margin: 2rem auto;
     overflow-x: auto;
     color: white;
     display: flex;
@@ -64,7 +64,7 @@
 }
 
 .today {
-    background-color: rgba(255, 0, 0, 0.7);
+    background-color: rgba(177, 0, 0, 0.87);
 }
 
 /* RESPONSIVE TABLE */

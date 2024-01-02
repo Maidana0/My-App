@@ -1,19 +1,21 @@
 'use client'
-import { useState } from 'react'
 import Header from '../Header'
-import ListToTasks from './ListToTasks'
+import ListToDo from './ListToDo'
 import { BsClipboard2Fill, BsClipboardCheckFill } from "react-icons/bs";
+import { UseContext } from '../Context';
 
 const ObjetivosPage = ({ styles }) => {
-    const [tasks, setTasks] = useState(false)
-    const handleClick = () => setTasks(!tasks)
+    const { router, searchParams } = UseContext()
+    const taskList = searchParams.has("completed")
+    const handleClick = () => router.replace(`/objetivos?${taskList ? "list-to-do" : "completed"}`)
+
     return (
         <>
             <Header title={`Mis Objetivos`}>
-                <button className={`icon-bg-${tasks ? 'b' : 'w'} btn-icon`}
+                <button className={`icon-bg-${taskList ? 'b' : 'w'} btn-icon`}
                     onClick={handleClick}>
                     {
-                        tasks
+                        taskList
                             ? <BsClipboard2Fill title='Por Cumplir' />
                             : <BsClipboardCheckFill title='Cumplidos' />
                     }
@@ -22,7 +24,7 @@ const ObjetivosPage = ({ styles }) => {
 
             </Header>
 
-            <ListToTasks styles={styles} />
+            <ListToDo styles={styles} />
         </>
     )
 }

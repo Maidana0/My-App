@@ -17,6 +17,7 @@ const hours = [
 ];
 
 export default function Horarios() {
+
     return (
 
         <HorariosPage font={amatic.className} styles={styles} days={weekDays} hours={hours} />

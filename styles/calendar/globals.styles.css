@@ -86,7 +86,14 @@
 
 
 
+.btn-calender {
+    transition: all 0.5s;
+}
 
+.btn-calender:hover {
+    background-color: black;
+    color: white;
+}
 
 
 
@@ -139,7 +146,7 @@
 
 .event-text-title {
     text-wrap: wrap;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 

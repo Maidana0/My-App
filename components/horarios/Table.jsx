@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
 import data from "./data";
-import { today } from "./data";
+import { today } from "../utils";
 
 const Table = (props) => {
     // Estado para almacenar información adicional para un día específico

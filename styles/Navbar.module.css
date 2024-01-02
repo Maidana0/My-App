@@ -78,7 +78,11 @@
         min-width: 60%;
     }
 }
-
+@media (max-height: 480px) {
+    .navbar {
+        right: -200vh;
+    }
+}
 
 .nav_active {
     opacity: 1;
