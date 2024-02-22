@@ -1,4 +1,4 @@
-import CalendarioPage from "@/components/calendario/CalendarioPage"
+import CalendarioPage from "@/components/pages/calendario/CalendarioPage"
 import "@/styles/calendar/globals.styles.css"
 
 export const metadata = {

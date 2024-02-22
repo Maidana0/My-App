@@ -1,0 +1,39 @@
+.header {
+    width: 100%;
+    justify-content: space-evenly;
+    margin: 1.5rem auto;
+    
+}
+
+.title_contain {
+    width: 65%;
+    padding: 0.5rem 1.5rem;
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+    text-align: center;
+    border: solid 1px white;
+    box-shadow: 0 0 12px 2px black;
+}
+
+.title_contain h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    font-family: '__Amatic_SC_eb1f18', '__Amatic_SC_Fallback_eb1f18';
+}
+
+
+
+@media (max-width: 780px) {
+    .title_contain h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title_contain {
+        font-size: 2rem;
+        width: 75%;
+        padding: 0.5rem;
+    }
+}

@@ -1,0 +1,147 @@
+.btn_add {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border-radius: 100%;
+    font-size: 3.5em;
+    transition: all .5s;
+    position: fixed;
+    bottom: 17%;
+    right: 5%;
+}
+
+.inputSearch {
+    outline-style: none;
+    border: none;
+    border-radius: 8px;
+    transition: ease .5s;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    margin: 1rem auto;
+    width: 95%;
+    padding: .7rem 1rem;
+    font-weight: 500;
+    font-size: 1.5rem;
+    font-family: '__Roboto_Mono_c41b7d', '__Roboto_Mono_Fallback_c41b7d';
+}
+
+.inputSearch:hover,
+.inputSearch:focus {
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.notes_contain {
+    width: 96%;
+    min-height: 75vh;
+    margin: 1.5rem auto 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 1.4rem;
+}
+
+.note {
+    min-height: 75px;
+    max-height: 250px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f5e180;
+    color: #393e46;
+    transition: all .6s;
+    box-shadow: rgba(0, 0, 0, 0.8) 0 0 8px 2px;
+
+    overflow: hidden;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+}
+
+.note:hover,
+.note:focus {
+    box-shadow: black 0 0 16px 4px;
+    transform: scale(1.01);
+}
+
+.update_note {
+    background-color: rgb(255, 158, 68);
+    height: 250px;
+}
+
+
+.new_note {
+    background-color: #faebcd;
+    height: 250px;
+}
+
+.note textarea {
+    resize: none;
+    border: none;
+    outline-style: none;
+    background-color: transparent;
+}
+
+
+
+.note_footer {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #5c5757;
+    height: 2rem;
+}
+
+.note_footer small,
+.note_footer div button {
+    cursor: pointer;
+}
+
+.note_footer div {
+    gap: 8px;
+}
+
+.note_footer div button {
+    background-color: inherit;
+    color: inherit;
+}
+
+.new_note div button {
+    padding: .5rem 1rem;
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    font-style: normal;
+    font-family: '__Roboto_Mono_c41b7d', '__Roboto_Mono_Fallback_c41b7d';
+    background-color: black;
+    cursor: pointer;
+}
+
+.note p,
+.note textarea {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    overflow-y: auto;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 1.7rem;
+}
+
+
+
+@media (max-width:480px) {
+    .notes_contain {
+        width: 90%;
+    }
+}
+
+
+@media (min-width:780px) {
+    .column_3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

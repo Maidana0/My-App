@@ -8,8 +8,8 @@ export const metadata = {
 
 export default function Home() {
   return (
-      <div className={`d-flex contain bg-d ${styles.home}`}>
-        hola
-      </div>
+    <div>
+      hola
+    </div>
   )
 }

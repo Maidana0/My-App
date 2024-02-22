@@ -1,0 +1,31 @@
+[
+    {
+        "name": "inicio",
+        "path": "/"
+    },
+    {
+        "name": "calendario",
+        "path": "/calendario"
+    },
+    {
+        "name": "horarios",
+        "path": "/horarios"
+    },
+    {
+        "name": "notas",
+        "path": "/notas"
+    },
+    {
+        "name": "tareas",
+        "paths": [
+            {
+                "name": "por hacer",
+                "path": "/tareas/por-hacer"
+            },
+            {
+                "name": "realizadas",
+                "path": "/tareas/realizadas"
+            }
+        ]
+    }
+]

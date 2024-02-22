@@ -53,8 +53,10 @@
 .fc-list-event:hover {
     color: white;
 }
+.fc-daygrid-day-events{
+}
 
-.fc-daygrid-event-harness:hover {
+.fc-daygrid-event-harness {
     cursor: pointer;
 }
 
@@ -132,7 +134,9 @@
     font-weight: 500;
 }
 
-.event-contain {}
+.event-contain {
+    margin-bottom: 3px;
+}
 
 .event-text-contain {
     display: flex;
@@ -142,22 +146,44 @@
     text-align: center;
 }
 
+.event-text-contain{
+    padding:2px 1px;
+}
 .event-text-time {}
 
 .event-text-title {
     text-wrap: wrap;
-    overflow: hidden;
+
+}
+/* 
+class="fc-list-event-title" CONTENDOR
+
+HIJO
+class="event-text-contain"
+
+CONTENIDO 
+class="event-text-title"
+*/
+.fc-daygrid-day{
+}
+.fc-daygrid-day-frame{
 }
 
-
+th .fc-list-day-text,
+th .fc-list-day-side-text{
+    padding: 10px;
+}
 
 @media (max-width: 780px) {
+    .fc-list-event-title{
+        max-width: 200px;
+    }
     .event-text-time {
         display: none;
     }
-
     .event-text-title {
         text-wrap: nowrap;
+        text-overflow: ellipsis;
         overflow: hidden;
     }
 }
@@ -180,7 +206,8 @@
         font-size: 1em;
     }
 
-    .fc-toolbar-title {
-        max-width: 170px;
+    .fc .fc-toolbar-title {
+        max-width: 185px;
+        font-size: 1.25em;
     }
 }

@@ -1,32 +1,48 @@
-import styles from '@/styles/Navbar.module.css'
-import Link from 'next/link'
+"use client"
 
-import Image from 'next/image'
-import { HamburgerBtn, NavItems } from './Components'
+import { Sling as Hamburger } from 'hamburger-react'
+import { useRef, useState } from 'react'
+import NavItems from './NavItems'
 
-const paths = ['calendario', 'horarios', 'notas','objetivos']
 
-export default function Navbar({ font }) {
+const Components = ({ styles }) => {
+    const [isOpen, setIsOpen] = useState(false)
+    const navContain = useRef(null)
+    const fakeBackdrop = useRef(null)
 
-    return (
-        <header className={`${font} d-flex bg-d`}>
-            <div className={`${styles.app} d-flex`}>
-                <Image
-                    priority={true}
-                    src={'/images/icon.png'}
-                    width={55}
-                    height={50}
-                    alt='Luffy Icon'
-                />
-                <h1> <Link href={'/'}>My App</Link></h1>
-            </div>
+    const setOpen = () => {
+        const app = document.getElementById('app')
+        setIsOpen(!isOpen)
 
-            <nav id="nav" className={styles.navbar}>
-                <NavItems styles={styles} paths={paths} link={Link} />
-            </nav>
+        if (isOpen) {
+            app && app.classList.remove(styles.hidden)
+            fakeBackdrop.current.classList.remove(styles.backdrop)
+            navContain.current.classList.remove(styles.nav_active)
+            return
+        }
 
-            <HamburgerBtn styles={styles} />
-        </header>
+        app && app.classList.add(styles.hidden)
+        fakeBackdrop.current.classList.add(styles.backdrop)
+        navContain.current.classList.add(styles.nav_active)
+    }
 
-    )
+    return <>
+        <div onClick={setOpen} ref={fakeBackdrop}></div>
+
+        < div ref={navContain} className={`d-flex ${styles.navbar}`} >
+            <NavItems styles={styles} setOpen={setOpen} />
+        </div >
+
+        <div className={`${styles.nav_btn} ${isOpen && styles.clicked}`}>
+            <Hamburger
+                toggled={isOpen}
+                toggle={setOpen}
+            />
+        </div >
+    </>
+
+
 }
+
+export default Components
+
