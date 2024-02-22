@@ -35,6 +35,7 @@ const Components = ({ styles }) => {
 
         <div className={`${styles.nav_btn} ${isOpen && styles.clicked}`}>
             <Hamburger
+                distance="lg"
                 toggled={isOpen}
                 toggle={setOpen}
             />
