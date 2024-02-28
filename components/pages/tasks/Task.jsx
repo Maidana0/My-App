@@ -1,73 +1,101 @@
-import { convertDate } from "@/utils/utils"
-import { MdModeEdit, MdOutlineSaveAs, MdDeleteForever, MdOutlineCheckBoxOutlineBlank, MdOutlineCheckBox, MdAddTask } from "react-icons/md";
-import { deleteTask, updateTaskState } from "./dataFunctions.js";
 import { useState } from 'react'
+import { DeleteTask, UpdateTask } from "./TaskButtons";
+import dynamic from "next/dynamic";
+// IMPORTS TASKS BUTTONS 
+const TaskPending = dynamic(() => import('@/components/pages/tasks/TaskButtons').then(mod => mod.TaskPending))
+const TaskInProgress = dynamic(() => import('@/components/pages/tasks/TaskButtons').then(mod => mod.TaskInProgress))
+const TaskDone = dynamic(() => import('@/components/pages/tasks/TaskButtons').then(mod => mod.TaskDone))
 
-const Task = ({ state, task, styles }) => {
+const TaskStop = dynamic(() => import('@/components/pages/tasks/TaskButtons').then(mod => mod.TaskStop))
+
+const SetTask = dynamic(() => import('@/components/pages/tasks/TaskButtons').then(mod => mod.SetTask))
+const SaveTask = dynamic(() => import('@/components/pages/tasks/TaskButtons').then(mod => mod.SaveTask))
+
+const ViewTaskModal = dynamic(() => import('@/components/pages/tasks/TaskModal'))
+
+export default function Task({ changes, task, styles }) {
     const [text, setText] = useState(task.task)
-    const [editText, setEditText] = useState(false)
+    const [boolText, SetBoolText] = useState(false)
 
-    const updateState = () => {
-        updateTaskState(task, state)
-    }
+    const editText = () => SetBoolText(!boolText)
 
-    const delTask = () => {
-        deleteTask(task.date, state)
+
+    const handleClick = async (e) => {
+        e.preventDefault()
+        const data = await UpdateTask(task._id, task.status)
+        if (data.sucess) {
+            changes.setChanges(!changes.changes)
+        }
     }
 
     return (
-        <div title={convertDate(task.date).full_date} className={styles.task_container}
-        >
-            <div>
-                {
-                    task.sucess
-                        ?
-                        <MdOutlineCheckBox
-                            fontSize={'1.7em'} title="Deshacer"
-                            className={`${styles.btn_check}`}
-                            onClick={updateState}
-                        />
-                        : <MdOutlineCheckBoxOutlineBlank
-                            fontSize={'1.7em'} title="Realizada"
-                            className={`${styles.btn_check}`}
-                            onClick={updateState}
-                        />
-                }
+        <div className={`d-flex ${styles.task_container}`} >
 
+            <div className="d-flex">
+                {
+                    task.status == 'done'
+                        ? <TaskDone handleClick={handleClick} />
+                        : task.status == 'in-progress'
+                            ? <TaskInProgress handleClick={handleClick} />
+                            : <TaskPending handleClick={handleClick} />
+                }
             </div>
+
+
 
             <div className={styles.task_text}  >
                 {
-                    editText ?
-                        <textarea
+                    boolText
+                        ? <textarea
                             required
                             autoComplete="off"
                             value={text}
                             onChange={(e) => setText(e.target.value)}
                         />
-                        :
-                        <p>
-                            {task.task}
-                        </p>
+                        : <p> {task.task} </p>
                 }
             </div>
-            <div className={styles.task_btn_container}>
+
+
+            <div className="d-flex">
+
+
+
+
 
                 {
-                    editText ?
-                        <MdOutlineSaveAs onClick={() => setEditText(!editText)} title="Guardar" size="1.7em" />
-                        :
-                        <MdModeEdit onClick={() => setEditText(!editText)} title="Editar" size="1.7em" />
+                    task.status == 'in-progress'
+                        ? <TaskStop handleClick={async (e) => {
+                            e.preventDefault()
+                            const data = await UpdateTask(task._id, false, 'pending')
+                            if (data.sucess) changes.setChanges(!changes.changes)
+                        }} />
+
+
+                        : task.status == 'pending'
+                            ? boolText
+                                ? <SaveTask handleClick={async (e) => {
+                                    e.preventDefault()
+                                    const data = await UpdateTask(task._id, false, false, text)
+                                    if (data.sucess) {
+                                        editText()
+                                        changes.setChanges(!changes.changes)
+                                    }
+                                }} />
+                                : <SetTask handleClick={editText} />
+
+
+
+                            : <ViewTaskModal task={task} styles={styles} />
                 }
 
 
-                <MdDeleteForever fontSize={'1.7em'} title="Borrar"
-                    className={`${styles.btn_delete}`}
-                    onClick={delTask}
-                />
+
+
+
+
+                <DeleteTask changes={changes} id={task._id} />
             </div>
         </div>
     )
 }
-
-export default Task

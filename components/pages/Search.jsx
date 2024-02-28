@@ -1,22 +1,22 @@
 "use client"
 import styles from "@/styles/components/Search.module.css"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useState } from "react"
 
 
 const Search = ({ from, query }) => {
-    const [value, setValue] = useState('')
-    const [searched, setSearched] = useState(false)
+    const queryParam = useSearchParams().get(query)
+    const [value, setValue] = useState(queryParam)
 
     const router = useRouter()
+
     return (
         <form
-            className={styles.form}
+            className={`d-flex ${styles.form}`}
             onSubmit={(e) => {
                 e.preventDefault()
-                if (value.trim().length >= 1) {
-                    setSearched(true)
-                    router.push(`?${query}=${value.trim()}`)
+                if (value) {
+                    value.trim().length >= 1 && router.push(`?${query}=${value.trim()}`)
                 }
             }}
         >
@@ -25,21 +25,20 @@ const Search = ({ from, query }) => {
                 type="text"
                 placeholder={`Buscar ${from}...`}
                 autoComplete="off"
-                value={value}
+                value={value ? value : ''}
                 onChange={(e) => setValue(e.target.value)}
                 minLength={1}
-                disabled={searched}
+                disabled={queryParam}
             />
 
             <input
-                type={searched ? "button" : "submit"}
-                value={searched ? "Borrar ✖" : "Buscar"}
-                className={`${styles.input} ${searched ? styles.delete : styles.search}`}
+                type={queryParam ? "button" : "submit"}
+                value={queryParam ? "Borrar ✖" : "Buscar"}
+                className={`${styles.input} ${queryParam ? styles.delete : ''}`}
                 onClick={(e) => {
-                    if (searched) {
+                    if (queryParam) {
                         e.preventDefault()
                         setValue('')
-                        setSearched(false)
                         router.push(`?`)
                     }
                 }}

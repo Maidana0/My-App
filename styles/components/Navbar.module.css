@@ -55,14 +55,15 @@
     width: 100%;
     height: 100%;
     background-color: var(--background-dark);
-    background-image: url('/images/luffy.svg');
-    background-position: bottom;
+    background-image: url('/images/brook-nav.svg');
+    background-position: 90%;
     background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .nav_links {
-    min-height: 4rem;
-    line-height: 4rem;
+    min-height: 3.8rem;
+    line-height: 3.8rem;
 }
 
 .nav_items a {
@@ -75,7 +76,6 @@
 }
 
 .nav_links:hover,
-.sub_active,
 .clicked {
     color: var(--secundary-color);
 }

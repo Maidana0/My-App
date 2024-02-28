@@ -76,13 +76,6 @@
     height: 250px;
 }
 
-.note textarea {
-    resize: none;
-    border: none;
-    outline-style: none;
-    background-color: transparent;
-}
-
 
 
 .note_footer {

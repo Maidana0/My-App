@@ -3,7 +3,7 @@ import NotesPage from "@/components/pages/notes/NotesPage"
 import React from "react"
 import Loading from "../loading"
 import { Suspense } from "react"
-import Header from "@/components/pages/Header"
+import Header from "@/components/pages/Title"
 import Search from "@/components/pages/Search"
 
 export const metadata = {

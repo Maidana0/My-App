@@ -17,15 +17,6 @@
     },
     {
         "name": "tareas",
-        "paths": [
-            {
-                "name": "por hacer",
-                "path": "/tareas/por-hacer"
-            },
-            {
-                "name": "realizadas",
-                "path": "/tareas/realizadas"
-            }
-        ]
+        "path": "/tareas/pendientes"
     }
 ]

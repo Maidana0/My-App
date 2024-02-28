@@ -1,5 +1,5 @@
 "use client"
-import Header from "../Header"
+import Header from "../Title"
 
 
 import FullCalendar from '@fullcalendar/react'

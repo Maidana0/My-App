@@ -1,8 +1,6 @@
-import Header from "@/components/pages/tasks/Header"
 import styles from "@/styles/Tasks.module.css"
 import NotFound from "@/app/not-found"
 import dynamic from "next/dynamic"
-
 
 export const metadata = {
     title: "Tareas",
@@ -10,24 +8,36 @@ export const metadata = {
 }
 
 
-const Search = dynamic(() => import("@/components/pages/Search"), { ssr: false })
-const LocalLoading = dynamic(() => import("@/components/loads/LocalLoading"))
+const Title = dynamic(() => import("@/components/pages/Title"))
+const Search = dynamic(() => import("@/components/pages/Search"))
+
 const List = dynamic(() => import("@/components/pages/tasks/List"), {
+    loading: () => <p style={{ margin: "auto" }}>Cargando Tareas...</p>,
     ssr: false,
-    loading: () => <LocalLoading num={2} />
 })
 
-export default async function Page({ params }) {
+const paths = [
+    { name: "en progreso", path: "/tareas/en-progreso" },
+    { name: "realizadas", path: "/tareas/realizadas" },
+]
+
+
+export default function Page({ params }) {
     const { list } = params
-    if (list != "por-hacer" && list != "realizadas") return <NotFound />
+    const correctParams = list == "pendientes" || paths.some(({ path }) => path.split("/").pop() == list);
+    if (!correctParams) { return <NotFound /> }
+
     return (
         <>
-            <Header list={list ? list : "por-hacer"} />
+            <Title linkTitle={{ name: "Mis Tareas", path: "/tareas/pendientes" }} linkContent={paths} />
             <Search from={"tarea"} query={"task"} />
-            <List
-                list={list}
-                styles={styles}
-            />
+
+            <div className={`d-flex f-column-center ${styles.tasks_list_container}`}>
+                <List
+                    list={list}
+                    styles={styles}
+                />
+            </div>
         </>
     )
 }

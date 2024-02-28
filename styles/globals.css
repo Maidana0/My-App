@@ -21,21 +21,17 @@ html,
 body {
     max-width: 100vw;
     min-height: 100vh;
+
+}
+
+main {
+    background-image: url('/images/luffy.svg');
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 body {
-    /* background-color: #141607; */
-
     background: radial-gradient(circle, var(--background-color) 0%, rgba(0, 0, 0, 1) 100%);
-
-    /* background: radial-gradient(circle,  rgba(0,61,255,1) 0%, rgba(0,0,0,1) 100%); */
-    /* background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,61,255,1) 50%, rgba(0,0,0,1) 100%); */
-
-    /* background: radial-gradient(circle,  rgb(251, 255, 0) 0%, rgba(0,0,0,1) 100%); */
-
-    /* background-color: #ffffb4; MISMO QUE OTRO PROYECTO*/
-
-    /* background-color: #000000; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -52,6 +48,23 @@ a {
 
 li {
     list-style: none;
+}
+
+textarea{
+    resize: none;
+    border: none;
+    outline-style: none;
+    color: inherit;
+
+    width: 100%;
+    background-color: transparent;
+    overflow-y: auto;
+
+
+}
+input {
+    outline-style: none;
+    border: none;
 }
 
 footer {
@@ -124,8 +137,7 @@ footer a:hover {
 }
 
 *::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+    width: 7px;
     scroll-behavior: smooth;
 }
 
@@ -136,23 +148,4 @@ footer a:hover {
 *::-webkit-scrollbar-thumb {
     background-color: var(--secundary-color);
     border-radius: 5px;
-}
-
-
-
-textarea::-webkit-scrollbar-track,
-p::-webkit-scrollbar-track {
-    background: inherit;
-
-}
-
-textarea::-webkit-scrollbar-thumb,
-p::-webkit-scrollbar-thumb {
-    background-color: #5c5757
-}
-
-textarea::-webkit-scrollbar,
-p::-webkit-scrollbar {
-    width: 3px;
-    height: 3px;
 }

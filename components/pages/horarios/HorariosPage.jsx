@@ -1,7 +1,7 @@
 'use client'
 import Table from "./Table"
 import ResponsiveTable from "./ResponsiveTable"
-import Header from "../Header"
+import Header from "../Title"
 import { FaDesktop, FaMobileAlt } from "react-icons/fa";
 
 import { useRouter, useSearchParams } from "next/navigation";
