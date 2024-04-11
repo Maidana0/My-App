@@ -1,11 +1,6 @@
 import { useState } from "react"
 import { MdOutlineRemoveRedEye, MdClose } from 'react-icons/md';
-
-function transformDate(dateString) {
-    const date = new Date(dateString)
-    const localDate = date.toLocaleString('es', { timeZone: process.env.TIME_ZONE })
-    return 'Día: ' + localDate.split(',').join(' - Hora:')
-}
+import {transformDate} from "@/utils/utils"
 
 export default function ViewTaskModal({ task, styles }) {
     const [modalIsOpen, setModalIsOpen] = useState(false)

@@ -10,7 +10,7 @@ export async function PUT(request) {
         const encrypted = cookies().get("token").value
         const decrypted = decryptedToken(encrypted)
 
-        const path = "tasks" + request.nextUrl.pathname.split("tasks")[1]
+        const path = "notes" + request.nextUrl.pathname.split("notes")[1]
         const updatedTask = await request.json()
 
         const data = await fetchData(path, { method: "PUT", body: updatedTask, authToken: decrypted })
@@ -28,7 +28,7 @@ export async function DELETE(request) {
         const encrypted = cookies().get("token").value
         const decrypted = decryptedToken(encrypted)
 
-        const path = "tasks" + request.nextUrl.pathname.split("tasks")[1]
+        const path = "notes" + request.nextUrl.pathname.split("notes")[1]
         const data = await fetchData(path, { method: "DELETE", authToken: decrypted })
 
         return NextResponse.json(data)

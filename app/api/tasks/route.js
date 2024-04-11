@@ -1,25 +1,22 @@
 import { NextResponse } from 'next/server';
+import { decryptedToken } from '@/utils/utils';
+import { cookies } from 'next/headers';
+import fetchData from '@/utils/fetch';
 
-//TEMPORAL
-const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZGU3OWJhY2ExNzM2YzQ0ODI1NzI0YiIsImlhdCI6MTcwOTA3OTAzNiwiZXhwIjoxNzEwMzc1MDM2fQ.-bxGoKiVom_U9H-5ylZT_faRZvAMgK_QajT0HD2EQ1E'
+
 
 export async function GET(request) {
     try {
-        const url = process.env.MY_API_URL + request.nextUrl.pathname + request.nextUrl.search
-        // const date = new Date()
-        // const localDate = date.toLocaleString('es', { timeZone: 'America/Argentina/Buenos_Aires' })
+        const encrypted = cookies().get("token").value
+        const decrypted = decryptedToken(encrypted)
 
-        const res = await fetch(url, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
-        })
-
-        const data = await res.json()
+        const path = "tasks" + request.nextUrl.search
+        const data = await fetchData(path, { authToken: decrypted })
         return NextResponse.json(data)
 
     } catch (error) {
         console.log(error);
-        return NextResponse.redirect('/not-found').status(404)
+        return NextResponse.redirect(new URL(`/not-found?message=${error.message}&status=${404}`, request.url))
     }
 }
 
@@ -27,20 +24,14 @@ export async function GET(request) {
 
 export async function POST(request) {
     try {
-        const url = process.env.MY_API_URL + request.nextUrl.pathname
+        const encrypted = cookies().get("token").value
+        const decrypted = decryptedToken(encrypted)
         const task = await request.json()
-        const res = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + TOKEN },
-            body: JSON.stringify(task)
-        })
-
-        const data = await res.json()
-
+        const data = await fetchData("tasks", { method: "POST", authToken: decrypted, body: task })
         return NextResponse.json(data)
     } catch (error) {
         console.log(error);
-        return NextResponse.redirect('/not-found').status(404)
+        return NextResponse.redirect('/not-found')
     }
 }
 

@@ -1,0 +1,44 @@
+.message_contain {
+    min-height: 50px;
+    width: 50%;
+    margin: 1rem auto 2rem;
+}
+.message_contain div{
+    -webkit-animation:swing-in-top-fwd .5s cubic-bezier(.175,.885,.32,1.275) both;animation:swing-in-top-fwd .5s cubic-bezier(.175,.885,.32,1.275) both;
+}
+
+.message_contain div div{
+    border-radius: 12px;
+    -webkit-animation:flip-out-hor-top .45s cubic-bezier(.55,.085,.68,.53) 3s both;animation:flip-out-hor-top .45s cubic-bezier(.55,.085,.68,.53) 3s both;
+}
+
+.success {
+    background-color: var(--secundary-color);
+}
+
+.error {
+    background-color: red;
+
+}
+
+.message_contain p {
+    text-align: center;
+    letter-spacing: 1px;
+    padding: .5rem;
+    font-weight: 700;
+    font-size: 2.3em;
+    font-family: '__Amatic_SC_c41a4c', '__Amatic_SC_Fallback_c41a4c';
+    color: aliceblue;
+}
+
+
+@media (max-width: 680px){
+    .message_contain{
+        width: 91%;
+    }
+}
+
+
+/* BY ANIMISTA */
+@-webkit-keyframes swing-in-top-fwd{0%{-webkit-transform:rotateX(-100deg);transform:rotateX(-100deg);-webkit-transform-origin:top;transform-origin:top;opacity:0}100%{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);-webkit-transform-origin:top;transform-origin:top;opacity:1}}@keyframes swing-in-top-fwd{0%{-webkit-transform:rotateX(-100deg);transform:rotateX(-100deg);-webkit-transform-origin:top;transform-origin:top;opacity:0}100%{-webkit-transform:rotateX(0deg);transform:rotateX(0deg);-webkit-transform-origin:top;transform-origin:top;opacity:1}}
+@-webkit-keyframes flip-out-hor-top{0%{-webkit-transform:rotateX(0);transform:rotateX(0);opacity:1}100%{-webkit-transform:rotateX(70deg);transform:rotateX(70deg);opacity:0}}@keyframes flip-out-hor-top{0%{-webkit-transform:rotateX(0);transform:rotateX(0);opacity:1}100%{-webkit-transform:rotateX(70deg);transform:rotateX(70deg);opacity:0}}

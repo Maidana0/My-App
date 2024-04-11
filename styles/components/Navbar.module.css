@@ -4,7 +4,7 @@
 
 .navbar_contain {
     justify-content: space-between;
-    padding: 0 1.8rem;
+    padding: 0 1rem;
     height: 4rem;
     width: 100%;
     margin: 0 auto;
@@ -30,7 +30,7 @@
 }
 
 .nav_btn:hover,
-.name_page:hover {
+.navbar_contain > a:hover {
     color: var(--primary-color);
 }
 
@@ -66,7 +66,7 @@
     line-height: 3.8rem;
 }
 
-.nav_items a {
+.login,.nav_items a {
     font-size: 2.8em;
     padding: 0 1.5rem;
 }

@@ -1,5 +1,4 @@
 import styles from "@/styles/Tasks.module.css"
-import NotFound from "@/app/not-found"
 import dynamic from "next/dynamic"
 
 export const metadata = {
@@ -7,11 +6,12 @@ export const metadata = {
     description: "Podras observar una lista de tareas perteneciente a las tareas que tienes por hacer y otra lista mostrnadote las tareas que ya lograste realizar."
 }
 
+const NotFound = dynamic(() => import("@/app/not-found"), { ssr: false })
 
-const Title = dynamic(() => import("@/components/pages/Title"))
-const Search = dynamic(() => import("@/components/pages/Search"))
+const Title = dynamic(() => import("@/components/Title"))
+const Search = dynamic(() => import("@/components/Search"), { ssr: false })
 
-const List = dynamic(() => import("@/components/pages/tasks/List"), {
+const List = dynamic(() => import("@/components/tasks/List"), {
     loading: () => <p style={{ margin: "auto" }}>Cargando Tareas...</p>,
     ssr: false,
 })
@@ -25,7 +25,7 @@ const paths = [
 export default function Page({ params }) {
     const { list } = params
     const correctParams = list == "pendientes" || paths.some(({ path }) => path.split("/").pop() == list);
-    if (!correctParams) { return <NotFound /> }
+    if (!correctParams) { return <NotFound message={"En tareas, no existe la siguiente sección: /" + list}/> }
 
     return (
         <>

@@ -1,140 +1,125 @@
-.btn_add {
-    background-color: white;
-    color: black;
-    cursor: pointer;
-    border-radius: 100%;
-    font-size: 3.5em;
-    transition: all .5s;
-    position: fixed;
-    bottom: 17%;
-    right: 5%;
-}
-
-.inputSearch {
-    outline-style: none;
-    border: none;
-    border-radius: 8px;
-    transition: ease .5s;
-    background-color: rgba(0, 0, 0, 0.3);
-    color: white;
-    margin: 1rem auto;
-    width: 95%;
-    padding: .7rem 1rem;
-    font-weight: 500;
-    font-size: 1.5rem;
-    font-family: '__Roboto_Mono_c41b7d', '__Roboto_Mono_Fallback_c41b7d';
-}
-
-.inputSearch:hover,
-.inputSearch:focus {
-    background-color: rgba(0, 0, 0, 0.9);
-}
-
-.notes_contain {
-    width: 96%;
-    min-height: 75vh;
-    margin: 1.5rem auto 4rem;
+.notes_container {
+    width: 99%;
+    height: auto;
+    margin: 3rem auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 1.4rem;
+    /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+    grid-template-columns: repeat(auto-fit, 260px);
+    justify-content: center;
+
+    grid-gap: 1.6rem 1rem;
 }
 
+
+
+.new_note,
 .note {
-    min-height: 75px;
-    max-height: 250px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 5px;
-    border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: .5rem;
     background-color: #f5e180;
     color: #393e46;
-    transition: all .6s;
-    box-shadow: rgba(0, 0, 0, 0.8) 0 0 8px 2px;
+    min-height: 150px;
+    max-height: 260px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 8px;
+    border-radius: 12px;
 
     overflow: hidden;
     word-wrap: break-word;
     text-overflow: ellipsis;
 }
 
-.note:hover,
-.note:focus {
-    box-shadow: black 0 0 16px 4px;
-    transform: scale(1.01);
-}
-
-.update_note {
-    background-color: rgb(255, 158, 68);
-    height: 250px;
-}
-
-
 .new_note {
     background-color: #faebcd;
-    height: 250px;
 }
 
+.new_note div,
+.note div {
+    justify-content: space-between;
+    height: 2rem;
+}
 
+.note svg {
+    cursor: pointer;
+}
+
+.note svg:hover {
+    filter: drop-shadow(0 0 10px #5c5757)
+}
+
+.note textarea,
+.note p,
+.new_note textarea {
+    padding: 5px;
+    font-size: 1.35rem;
+    font-weight: 500;
+    line-height: 1.7rem;
+    max-height: 100%;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.new_note div input {
+    cursor: pointer;
+    background-color: var(--neutral-mutted-color);
+    color: #fff;
+    padding: .3rem .6rem;
+    font-size: 1.5rem;
+    border-radius: 12px;
+    font-family: '__Amatic_SC_c41a4c', '__Amatic_SC_Fallback_c41a4c';
+    font-weight: 700;
+    transition: background-color ease .3s;
+}
+
+.updating_note {
+    background-color: rgb(255, 158, 68);
+}
 
 .note_footer {
     display: flex;
+    width: 100%;
     align-items: center;
-    flex-direction: row;
     justify-content: space-between;
     color: #5c5757;
     height: 2rem;
 }
 
-.note_footer small,
-.note_footer div button {
+.note_footer> {
     cursor: pointer;
-}
-
-.note_footer div {
-    gap: 8px;
-}
-
-.note_footer div button {
-    background-color: inherit;
     color: inherit;
 }
 
-.new_note div button {
-    padding: .5rem 1rem;
-    border-radius: 12px;
-    color: white;
-    font-size: 1rem;
-    font-weight: 500;
-    font-style: normal;
-    font-family: '__Roboto_Mono_c41b7d', '__Roboto_Mono_Fallback_c41b7d';
-    background-color: black;
-    cursor: pointer;
+
+
+.new_note div input:hover,
+.new_note div input:focus {
+    background-color: var(--background-dark);
+
 }
 
-.note p,
-.note textarea {
-    width: 100%;
-    height: 100%;
-    padding: 5px;
-    overflow-y: auto;
-    font-size: 1.4rem;
-    font-weight: 500;
-    line-height: 1.7rem;
+.note p::-webkit-scrollbar-track,
+.new_note textarea::-webkit-scrollbar-track,
+.note textarea::-webkit-scrollbar-track {
+    background: inherit;
 }
 
-
-
-@media (max-width:480px) {
-    .notes_contain {
-        width: 90%;
-    }
+.note p::-webkit-scrollbar,
+.new_note textarea::-webkit-scrollbar,
+.note textarea::-webkit-scrollbar {
+    width: 4px;
 }
 
+.note p::-webkit-scrollbar-thumb,
+.new_note textarea::-webkit-scrollbar-thumb,
+.note textarea::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.63);
+}
 
-@media (min-width:780px) {
-    .column_3 {
-        grid-template-columns: repeat(3, 1fr);
+@media (max-width:537px) {
+    .notes_container {
+        justify-content: center;
     }
 }

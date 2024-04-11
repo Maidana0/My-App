@@ -1,29 +1,22 @@
 import { NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
 
 // This function can be marked `async` if using `await` inside
 export function middleware(request) {
+  const listCookies = cookies()
+  const logged = listCookies.has("logged") ? listCookies.get("logged").value : null
 
-  // return NextResponse.redirect(new URL('/home', request.url))
-  // console.log(request);
-  // return NextResponse.json({ unauthorized: "NO ESTA AUTORIZADO XD" })
-  return NextResponse.next()
+  if (logged == "true") return NextResponse.next()
+
+  // NO SE ENCUENTRA UNA SESIÓN ACTIVA, por lo que no tendra un token valido
+  return NextResponse.redirect(new URL('/cuenta', request.url))
 }
 
 export const config = {
-  matcher: ['/notas', '/tareas/(.*)','/horarios', '/calendario'],
+  matcher: [
+    "/notas", "/tareas/(.*)",
+    "/api/tasks", "/api/tasks/(.*)",
+    "/api/notes", "/api/notes/(.*)"
+  ],
 }
-
-// export const config = {
-//     matcher: [
-//       {
-//         source: '/api/*',
-//         regexp: '^/api/(.*)',
-//         locale: false,
-//         has: [
-//           { type: 'header', key: 'Authorization', value: 'Bearer Token' },
-//           { type: 'query', key: 'userId', value: '123' },
-//         ],
-//         missing: [{ type: 'cookie', key: 'session', value: 'active' }],
-//       },
-//     ],
-//   }
+// '/horarios', '/calendario'

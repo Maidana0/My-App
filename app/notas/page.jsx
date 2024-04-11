@@ -1,22 +1,31 @@
-import NotesPage from "@/components/pages/notes/NotesPage"
-// import styles from "@/styles/Notes.module.css"
-import React from "react"
-import Loading from "../loading"
-import { Suspense } from "react"
-import Header from "@/components/pages/Title"
-import Search from "@/components/pages/Search"
+import dynamic from "next/dynamic"
+import styles from "@/styles/Notes.module.css"
+
+import { IoAdd } from "react-icons/io5";
+
+const Title = dynamic(() => import("@/components/Title"))
+const Search = dynamic(() => import("@/components/Search"),{ssr:false})
+const ListNotes = dynamic(() => import("@/components/notes/ListNotes"),{ssr:false})
 
 export const metadata = {
-    title: "Notas"
-}
+    title: "Notas",
+    description: "Todas tus notas guardadas en un mismo sitio!. Tienes la posibilidad de crear más notas, editarlas y borrarlas a tu voluntad."
 
+}
+const aditional = [
+    {
+        name: <div className="d-flex" style={{ gap: "5px" }}><IoAdd />Agregar Nota</div>,
+        path: "#newNote"
+    }
+]
 
 export default function Notas() {
     return (
         <>
-            <NotesPage />
-            <Header title={"Mis Notas"} />
+            <Title title={"Mis Notas"} linkContent={aditional} />
             <Search from={"nota"} query={"text"} />
+
+            <ListNotes styles={styles} />
         </>
     )
 }

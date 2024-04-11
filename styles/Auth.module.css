@@ -1,7 +1,5 @@
 .auth_contain {
-    /* min-height: calc(100vh - 4.5rem); */
-    min-height: 100vh;
-    background-color: rgba(0, 0, 0, 0.82);
+    min-height: 75vh;
     color: white;
     flex-direction: row;
     justify-content: space-evenly;
@@ -14,11 +12,15 @@
     justify-content: center;
     margin-bottom: 2rem;
 }
+.auth_header img,
+.auth_header h1 {
+    filter: drop-shadow(0 0 10px var(--primary-color));
+}
 
 .auth_contain form {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 14px;
     width: 100%;
 }
 
@@ -37,12 +39,13 @@
 .login_contain {
     flex-direction: column;
     width: 350px;
-    border: solid 1px #5c5757;
+    box-shadow: 0 0 15px var(--primary-color);
     padding: 2rem 1rem;
     border-radius: 12px;
     gap: 1rem;
     background-color: rgba(22, 26, 44, 0.8);
 }
+
 
 .register_modal {
     width: 100%;
@@ -58,17 +61,22 @@
     overflow-y: auto;
     position: relative;
     width: 432px;
-    height: 432px;
+    height: auto;
     margin: auto;
-    border: solid 1px #5c5757;
     background-color: rgb(20, 59, 51);
     border-radius: 12px;
     gap: 1rem;
-    padding: 16px;
+    padding: 18px;
+    box-shadow: 0 0 15px   #008a55;
+
+}
+
+.input_row {
+    justify-content: space-between;
 }
 
 .input_row input {
-    width: 50%;
+    width: 49%;
 }
 
 .password_contain {
@@ -149,15 +157,17 @@
     .auth_contain {
         flex-direction: column;
         justify-content: center;
-
+        margin-bottom: 4rem;
     }
 }
 
 
 
 @media (max-width: 480px) {
+
+    .login_contain,
     .register_contain {
-        width: 90%;
+        width: 88%;
 
     }
 }

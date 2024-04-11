@@ -25,8 +25,8 @@ const Title = ({ title, linkTitle, linkContent }) => {
 
 
                 linkContent.length == 1 ?
-                    <Link href={linkContent.path} >
-                        {linkContent.name}
+                    <Link href={linkContent[0].path} >
+                        {linkContent[0].name}
                     </Link>
                     :
                     linkContent.map((child, i) => {
