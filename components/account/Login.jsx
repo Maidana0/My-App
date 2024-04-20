@@ -5,13 +5,14 @@ import { useRouter } from "next/navigation"
 
 
 const Login = ({ styles }) => {
+
   const router = useRouter()
   const openModal = () => router.push("?registrarme")
 
   return (
     <div className={`d-flex ${styles.login_contain}`}>
 
-      <LoginForm styles={styles} />
+      <LoginForm styles={styles} router={router}/>
 
 
       <Buttons styles={styles} button={{

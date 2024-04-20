@@ -7,7 +7,7 @@
 
 :root {
     --primary-color: #00A9FF;
-    --secundary-color: #207ad8;
+    --secondary-color: #207ad8;
 
 
     --background-dark: #141607;
@@ -29,6 +29,7 @@ main {
     background-image: url('/images/luffy.svg');
     background-position: center;
     background-repeat: no-repeat;
+    min-height: 60vh;
 }
 
 body {
@@ -147,6 +148,6 @@ footer a:hover {
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: var(--secundary-color);
+    background-color: var(--secondary-color);
     border-radius: 5px;
 }

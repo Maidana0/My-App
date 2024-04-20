@@ -18,9 +18,6 @@
     {
         "name": "tareas",
         "path": "/tareas/pendientes"
-    },
-    {
-        "name": "iniciar sesión",
-        "path": "/cuenta"
     }
+    
 ]

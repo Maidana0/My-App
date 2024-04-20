@@ -5,7 +5,5 @@ export const metadata = {
     description: 'This page could not be found..',
 }
 
-// const NotFound = dynamic(() => import('@/components/Error').then((mod) => mod.Error),{ssr:false})
 const NotFound = dynamic(() => import('@/components/Error'),{ssr:false})
-
 export default NotFound

@@ -12,12 +12,13 @@ const Register = ({ styles }) => {
   const router = useRouter()
   const closeModal = () => router.push("?")
 
+
   if (!queryParam) return
   else return (
     <div className={`d-flex ${styles.register_modal}`}>
       <div className={`d-flex f-column-center ${styles.register_contain}`}>
         <h3>Crear Usuario </h3>
-        <RegisterForm styles={styles} />
+        <RegisterForm styles={styles} closeModal={closeModal}/>
 
         <p><small>Puedes registrarte con: </small></p>
         <Buttons

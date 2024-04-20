@@ -3,12 +3,12 @@
 import Link from "next/link"
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-const hola = ["hola", "chau"]
-hola.toString()
+
+
 const Error = ({ message, status, height }) => {
     const params = useSearchParams()
-    const messageQuery = params.has("message") && params.get("message")
-    const statusQuery = params.has("status") && params.get("status")
+    const messageQuery = params?.has("message") && params.get("message")
+    const statusQuery = params?.has("status") && params.get("status")
 
     return (
         <div style={{ height: height ? height : "100vh", width: "100%" }}

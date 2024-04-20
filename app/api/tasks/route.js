@@ -16,7 +16,9 @@ export async function GET(request) {
 
     } catch (error) {
         console.log(error);
-        return NextResponse.redirect(new URL(`/not-found?message=${error.message}&status=${404}`, request.url))
+        // return NextResponse.redirect(new URL(`/not-found?message=${error.message}&status=${404}`, request.url))
+        return NextResponse.json({ error })
+
     }
 }
 
@@ -31,7 +33,9 @@ export async function POST(request) {
         return NextResponse.json(data)
     } catch (error) {
         console.log(error);
-        return NextResponse.redirect('/not-found')
+        // return NextResponse.redirect('/not-found')
+        return NextResponse.json({ error })
+
     }
 }
 

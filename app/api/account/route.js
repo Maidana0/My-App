@@ -2,8 +2,9 @@ import fetchData from '@/utils/fetch';
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers'
 import { configToken, encryptedToken, decryptedToken } from '@/utils/utils';
-//TEMPORAL
 
+
+// LOGIN
 export async function POST(request) {
     try {
         const user = await request.json()
@@ -16,8 +17,7 @@ export async function POST(request) {
 
         return NextResponse.json(data)
     } catch (error) {
-        console.log(error);
-        return NextResponse.redirect(new URL('/not-found', request.url))
+        return NextResponse.json({ error })
     }
 }
 
@@ -28,13 +28,14 @@ export async function GET(request) {
         if (!encrypted) return NextResponse.redirect(new URL('/cuenta', request.url))
 
         const decrypted = decryptedToken(encrypted)
-        const data = await fetchData("user/current", { authToken: decrypted })
+        const data = await fetchData("user/logout", { authToken: decrypted })
+        if (data.success) {
+            cookies().delete("logged")
+            cookies().delete("token")
+        }
 
-        // if (data.success == false) return NextResponse.redirect(`/not-found?message=${data.message}`).status(404)
-        // return NextResponse.redirect('/').status(200)
         return NextResponse.json(data)
     } catch (error) {
-        console.log(error);
-        return NextResponse.redirect(new URL('/not-found', request.url))
+        return NextResponse.json({ error })
     }
 }

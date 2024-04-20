@@ -1,13 +1,13 @@
-"use client"
 
 import { Sling as Hamburger } from 'hamburger-react'
 import { useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import urls from './urls.json'
-
+import { UseContext } from '../context/Context'
 
 const Components = ({ styles }) => {
+    const { logout } = UseContext()
     const [isOpen, setIsOpen] = useState(false)
     const navContain = useRef(null)
     const fakeBackdrop = useRef(null)
@@ -32,11 +32,6 @@ const Components = ({ styles }) => {
 
     const isActive = (path) => pathName.endsWith(path)
 
-
-    // return <Link style={{fontSize:"1.5em"}} className={isActive("/cuenta") && styles.active}
-    //     href={"/cuenta"}>Iniciar Sesión</Link>
-
-
     return <>
         <div onClick={setOpen} ref={fakeBackdrop}></div>
 
@@ -48,6 +43,14 @@ const Components = ({ styles }) => {
                         <Link href={url.path} onClick={setOpen}>{url.name} </Link>
                     </li>
                 ))}
+                <li className={styles.nav_links} style={{margin:"auto auto 1rem"}} >
+                    <Link onClick={() => {
+                        setOpen()
+                        logout()
+                    }} href={"/"}>
+                        Cerrar Sesión
+                    </Link>
+                </li>
             </ul >
         </div >
 

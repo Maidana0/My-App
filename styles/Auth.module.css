@@ -12,6 +12,7 @@
     justify-content: center;
     margin-bottom: 2rem;
 }
+
 .auth_header img,
 .auth_header h1 {
     filter: drop-shadow(0 0 10px var(--primary-color));
@@ -67,7 +68,7 @@
     border-radius: 12px;
     gap: 1rem;
     padding: 18px;
-    box-shadow: 0 0 15px   #008a55;
+    box-shadow: 0 0 15px #008a55;
 
 }
 
@@ -75,8 +76,17 @@
     justify-content: space-between;
 }
 
-.input_row input {
+.input_row input,
+.input_row span {
     width: 49%;
+}
+
+.auth_contain span {
+    text-align: center;
+    color: lightcoral;
+    font-size: small;
+    margin: auto;
+    width: 100%;
 }
 
 .password_contain {

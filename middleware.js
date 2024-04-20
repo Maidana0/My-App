@@ -6,6 +6,15 @@ export function middleware(request) {
   const listCookies = cookies()
   const logged = listCookies.has("logged") ? listCookies.get("logged").value : null
 
+  if (request.nextUrl.pathname.startsWith('/cuenta')) {
+    return logged == "true"
+      ? NextResponse.redirect(new URL('/', request.url))
+      : NextResponse.next()
+  }
+
+
+
+
   if (logged == "true") return NextResponse.next()
 
   // NO SE ENCUENTRA UNA SESIÓN ACTIVA, por lo que no tendra un token valido
@@ -14,6 +23,7 @@ export function middleware(request) {
 
 export const config = {
   matcher: [
+    "/cuenta",
     "/notas", "/tareas/(.*)",
     "/api/tasks", "/api/tasks/(.*)",
     "/api/notes", "/api/notes/(.*)"

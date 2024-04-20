@@ -12,21 +12,21 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body id="app" className={roboto.className}>
-        <Header font={amatic.className} />
-        <main>
-          <Suspense>
-            <ContextProvider>
+        <ContextProvider>
+          <Header font={amatic.className} />
+          <main>
+            <Suspense>
               {children}
+            </Suspense>
+          </main>
             </ContextProvider>
-          </Suspense>
-        </main>
-        <footer className='d-flex bg-d f-column-center' >
-          <a title="Instagram" target='blank'
-            className={amatic.className}
-            href='https://www.instagram.com/franco_maidana07/'>
-            @Maidana07
-          </a>
-        </footer>
+          <footer className='d-flex bg-d f-column-center' >
+            <a title="Instagram" target='blank'
+              className={amatic.className}
+              href='https://www.instagram.com/franco_maidana07/'>
+              @Maidana07
+            </a>
+          </footer>
       </body>
     </html>
   )

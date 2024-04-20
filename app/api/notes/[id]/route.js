@@ -18,7 +18,9 @@ export async function PUT(request) {
         return NextResponse.json(data)
     } catch (error) {
         console.log(error);
-        return NextResponse.redirect('/not-found').status(404)
+        // return NextResponse.redirect('/not-found').status(404)
+        return NextResponse.json({ error })
+
     }
 }
 
@@ -34,6 +36,8 @@ export async function DELETE(request) {
         return NextResponse.json(data)
     } catch (error) {
         console.log(error);
-        return NextResponse.redirect('/not-found').status(404)
+        // return NextResponse.redirect('/not-found').status(404)
+        return NextResponse.json({ error })
+
     }
 }
