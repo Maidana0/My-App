@@ -10,8 +10,8 @@ export const metadata = {
 const Login = dynamic(() => import("@/components/account/Login"), { ssr: false })
 const Register = dynamic(() => import("@/components/account/Register"), { ssr: false })
 
-export default function Auth() {
-
+export default function Auth({searchParams }) {
+  const fail = searchParams?.failValidation || false
 
   return (
     <div className={`d-flex ${styles.auth_contain}`}>
@@ -20,6 +20,7 @@ export default function Auth() {
           src={'/images/icon.webp'} alt='Luffy Icon'
           width={100} height={100} />
         <h1>My Personal App</h1>
+        {fail ? <span style={{maxWidth:"300px", fontSize:"1.3em", marginTop:"1rem"}}>{fail}</span> : ""}
       </div>
 
 
