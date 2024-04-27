@@ -37,3 +37,6 @@ next-env.d.ts
 
 .vscode
 next.config.js
+
+
+files-dev

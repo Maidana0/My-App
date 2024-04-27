@@ -50,25 +50,25 @@ export const ContextProvider = ({ children }) => {
         {children}
 
 
+
+
+
         {
-
-            <div className={`${styles.message_contain}`}>
-
-                {
-                    message
-                        ?
-                        <div >
-                            <div className={`${message ? message.success ? styles.success : styles.fail : ""}`}>
-                                <p>{message.message} </p>
-                            </div>
+            message
+                ?
+                <div className={`${styles.message_contain}`}>
+                    <div >
+                        <div className={`${message ? message.success ? styles.success : styles.fail : ""}`}>
+                            <p>{message.message} </p>
                         </div>
+                    </div>
+                </div>
 
-                        : ""
-                }
-
-            </div>
-
+                : ""
         }
+
+
+
     </Context.Provider>
 }
 

@@ -19,7 +19,7 @@ export default function Auth({searchParams }) {
         <Image priority
           src={'/images/icon.webp'} alt='Luffy Icon'
           width={100} height={100} />
-        <h1>My Personal App</h1>
+        <h1>My Personal Web App</h1>
         {fail ? <span style={{maxWidth:"300px", fontSize:"1.3em", marginTop:"1rem"}}>{fail}</span> : ""}
       </div>
 

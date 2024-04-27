@@ -2,7 +2,7 @@
 async function fetchData(path, { isLocalReq, method, body, authToken }) {
     try {
         const res = await fetch(
-            `http://localhost:${isLocalReq ? "3000/api/" + path : "4000/api/" + path}`,
+            `${isLocalReq ? process.env.MY_LOCAL_URL : process.env.MY_API_URL}/api/${path}`,
             {
                 method: method ? method : "GET",
                 headers: {

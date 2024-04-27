@@ -1,8 +1,6 @@
 import fetchData from '@/utils/fetch';
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers'
-import { configToken, encryptedToken, decryptedToken } from '@/utils/utils';
-import { redirect } from 'next/navigation'
 
 
 // REGISTER

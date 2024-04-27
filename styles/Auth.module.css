@@ -17,7 +17,9 @@
 .auth_header h1 {
     filter: drop-shadow(0 0 10px var(--primary-color));
 }
-
+.auth_header h1{
+    padding: 0 2.7rem;
+}
 .auth_contain form {
     display: flex;
     flex-direction: column;
