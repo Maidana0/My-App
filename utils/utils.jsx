@@ -54,19 +54,6 @@ export const decryptedToken = (encryptedToken) => {
 
 
 
-
-//  EN PROCESO DEL VIDEO
-// const encryptedToken = Buffer.concat([cipher.update(token), cipher.final()])
-// return {
-//     iv: iv.toString()
-// }
-
-// encryptedToken += cipher.final('hex');
-// aes-192-ccm
-// const cipher = crypto.createCipheriv('aes-256-cbc', process.env.SECRET_KEY,);
-// let encryptedToken = cipher.update(token, 'utf8', 'hex');
-// encryptedToken += cipher.final('hex');
-
 export function transformDate(dateString, onlyDate) {
     const date = dateString ? new Date(dateString) : new Date()
     const localDate = date.toLocaleString('es', { timeZone: process.env.TIME_ZONE })
@@ -117,8 +104,6 @@ export function convertDate(currentDateString) {
 
     let hours = String(currentDate.getHours() + 3).padStart(2, '0');
     let minutes = String(currentDate.getMinutes()).padStart(2, '0');
-    // let seconds = String(currentDate.getSeconds()).padStart(2, '0');
-    // let milliseconds = String(currentDate.getMilliseconds()).padStart(3, '0');
 
     return {
         date_y: `${day}/${month}/${year}`,

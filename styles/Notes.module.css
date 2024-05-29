@@ -3,11 +3,12 @@
     height: auto;
     margin: 3rem auto;
     display: grid;
-    /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
-    grid-template-columns: repeat(auto-fit, 260px);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 340px));
+    /* grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); */
+    /* grid-template-columns: repeat(auto-fit, 260px); */
     justify-content: center;
 
-    grid-gap: 1.6rem 1rem;
+    grid-gap: 2.4rem 1.4rem;
 }
 
 
@@ -21,7 +22,7 @@
     background-color: #f5e180;
     color: #393e46;
     min-height: 150px;
-    max-height: 260px;
+    max-height: 300px;
     width: 100%;
     margin: 0 auto;
     padding: 8px;
@@ -53,10 +54,10 @@
 .note textarea,
 .note p,
 .new_note textarea {
-    padding: 5px;
+    padding: 7px 10px;
     font-size: 1.35rem;
     font-weight: 500;
-    line-height: 1.7rem;
+    line-height: 2rem;
     max-height: 100%;
     width: 100%;
     overflow-y: auto;

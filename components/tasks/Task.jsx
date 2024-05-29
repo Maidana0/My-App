@@ -52,7 +52,7 @@ export default function Task({ setError, changes, task, styles }) {
                         ? <TaskDone handleClick={handleClick} />
                         : task.status == 'in-progress'
                             ? <TaskInProgress handleClick={handleClick} />
-                            : <TaskPending handleClick={handleClick} />
+                            : !boolText && <TaskPending handleClick={handleClick} />
                 }
             </div>
 
@@ -98,8 +98,8 @@ export default function Task({ setError, changes, task, styles }) {
                             ? boolText
                                 ? <SaveTask handleClick={async (e) => {
                                     e.preventDefault()
-                                    if(task.task == text) return  editText()
-                                    
+                                    if (task.task == text) return editText()
+
                                     const data = await updateTask(task._id, false, false, text)
 
                                     if (data.message == "Unauthorized" | data.fail | data.error | data.success == false) {
@@ -127,7 +127,7 @@ export default function Task({ setError, changes, task, styles }) {
 
 
 
-                <DeleteTaskIcon handleClick={async e => {
+                {!boolText && <DeleteTaskIcon handleClick={async e => {
                     e.preventDefault()
                     const data = await deleteTask(task._id)
 
@@ -141,7 +141,7 @@ export default function Task({ setError, changes, task, styles }) {
 
                     data.message && handleMessage(data)
 
-                }} />
+                }} />}
             </div>
         </div>
     )

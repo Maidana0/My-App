@@ -13,7 +13,7 @@ const ListNotes = ({ styles }) => {
   const [error, setError] = useState({ error: false, message: "", status: 404 })
   const [listNotes, setListNotes] = useState([])
   const [changesNotes, setChangesNotes] = useState(false)
-  const [sort, setSort] = useState(false)
+  const [sort, setSort] = useState(-1)
 
   const handleChangesNotes = () => setChangesNotes(!changesNotes)
 
@@ -22,7 +22,8 @@ const ListNotes = ({ styles }) => {
   // const sort = useSearchParams().get("sort") == "-1" ? useSearchParams().get("sort") : false
 
   useEffect(() => {
-    const path = "notes?" + (text ? `text=${text}&` : '') + (sort ? `sort=${sort}` : '')
+    // const path = "notes?" + (text ? `text=${text}&` : '') + (sort ? `sort=${sort}` : '')
+    const path = "notes?" + (text ? `text=${text}&` : '') + `sort=${sort}`
 
     const getNotes = async () => {
       const data = await fetchData(path, { isLocalReq: true })

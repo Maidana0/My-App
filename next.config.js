@@ -8,7 +8,7 @@ const nextConfig = {
         MY_LOCAL_URL: "",
         GOOGLE_API_KEY: "AIzaSyAfCyf5hHNbYKuy3BBqcJpEJj144JGVlrY",
         TIME_ZONE: "America/Argentina/Buenos_Aires",
-        ENVIRONMENT: "development",
+        ENVIRONMENT: "production",
         SECRET_KEY: "MyPersonalWebSite_Maidana_Franco"
 
     },

@@ -4,7 +4,7 @@ import { RiFacebookFill } from "react-icons/ri";
 const Buttons = ({ styles, button }) => {
     const { handleClickModal, text, className } = button
 
-    const authApi = async (e) => window.location.href = `http://localhost:4000/api/user/${e.target.name}`;
+    const authApi = async (e) => window.location.href = `${process.env.MY_API_URL}/api/user/${e.target.name}`;
 
 
 

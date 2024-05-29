@@ -64,7 +64,7 @@ const OneNote = ({ setError, note, updateList, styles }) => {
               }
               } />
           }
-          <MdDelete size={"1.45em"} onClick={handleDelete} />
+          {!updateText && <MdDelete size={"1.45em"} onClick={handleDelete} />}
         </div>
       </div>
 
