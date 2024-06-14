@@ -33,12 +33,16 @@
     text-overflow: ellipsis;
 }
 
+.new_note,
+.updating_note {
+    min-height: 250px;
+}
+
 .new_note {
     background-color: #faebcd;
 }
 
-.new_note div,
-.note div {
+.new_note div {
     justify-content: space-between;
     height: 2rem;
 }
@@ -52,15 +56,23 @@
 }
 
 .note textarea,
-.note p,
+.p_container {
+    min-height: calc(100% - 2.3rem);
+    overflow-y: auto;
+}
+
+.p_container p {
+    margin-bottom: 5px;
+}
+
+.note textarea,
+.p_container p,
 .new_note textarea {
     padding: 7px 10px;
     font-size: 1.35rem;
     font-weight: 500;
-    line-height: 2rem;
-    max-height: 100%;
+    line-height: 1.8rem;
     width: 100%;
-    overflow-y: auto;
 }
 
 .new_note div input {
@@ -80,12 +92,11 @@
 }
 
 .note_footer {
-    display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-between;
     color: #5c5757;
-    height: 2rem;
+    height: 2.3rem;
 }
 
 .note_footer> {
@@ -101,19 +112,19 @@
 
 }
 
-.note p::-webkit-scrollbar-track,
+.p_container::-webkit-scrollbar-track,
 .new_note textarea::-webkit-scrollbar-track,
 .note textarea::-webkit-scrollbar-track {
     background: inherit;
 }
 
-.note p::-webkit-scrollbar,
+.p_container::-webkit-scrollbar,
 .new_note textarea::-webkit-scrollbar,
 .note textarea::-webkit-scrollbar {
     width: 4px;
 }
 
-.note p::-webkit-scrollbar-thumb,
+.p_container::-webkit-scrollbar-thumb,
 .new_note textarea::-webkit-scrollbar-thumb,
 .note textarea::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, 0.63);

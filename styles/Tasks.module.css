@@ -103,6 +103,8 @@
 }
 
 .task_text textarea {
+    min-height: 100px;
+    padding: 1rem .5rem;
     font-size: 1.7em;
     text-align: center;
     width: 100%;

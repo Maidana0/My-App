@@ -19,10 +19,8 @@ const ListNotes = ({ styles }) => {
 
   // query params
   const text = useSearchParams().get("text")
-  // const sort = useSearchParams().get("sort") == "-1" ? useSearchParams().get("sort") : false
 
   useEffect(() => {
-    // const path = "notes?" + (text ? `text=${text}&` : '') + (sort ? `sort=${sort}` : '')
     const path = "notes?" + (text ? `text=${text}&` : '') + `sort=${sort}`
 
     const getNotes = async () => {
@@ -47,8 +45,8 @@ const ListNotes = ({ styles }) => {
       <div className={"d-flex " + styles.sort_select_contain}>
         <label htmlFor="sort">Ordenar desde la fecha:</label>
         <select name="sort" id="sort" onChange={(e) => { e.target.value != sort && setSort(e.target.value) }}>
-          <option value={1} defaultChecked>más antigua</option>
-          <option value={-1}>más reciente</option>
+          <option value={1}>más antigua</option>
+          <option value={-1} defaultChecked>más reciente</option>
         </select>
       </div>
 

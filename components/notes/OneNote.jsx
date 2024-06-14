@@ -4,7 +4,12 @@ import fetchData from "@/utils/fetch";
 import { transformDate } from "@/utils/utils";
 import { UseContext } from "../context/Context";
 
-
+const Parrafos = ({ text }) => {
+  const parrafos = text.split("\n")
+  return parrafos.map((parrafo, index) => (
+    <p key={index}>{parrafo}</p>
+  ))
+}
 
 const OneNote = ({ setError, note, updateList, styles }) => {
   const { handleMessage } = UseContext()
@@ -48,10 +53,13 @@ const OneNote = ({ setError, note, updateList, styles }) => {
       {
         updateText
           ? <textarea value={text} required minLength={2} autoComplete="off" onChange={(e) => setText(e.target.value)}></textarea>
-          : <p>{note.text}</p>
+          : <div className={styles.p_container}>
+            <Parrafos text={note.text} />
+          </div>
+
       }
 
-      <div className="d-flex">
+      <div className={`d-flex ${styles.note_footer}`}>
         <small>{transformDate(note.updatedAt, true)}</small>
 
         <div className="d-flex" style={{ gap: "8px" }}>
