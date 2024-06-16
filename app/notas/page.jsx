@@ -4,8 +4,8 @@ import styles from "@/styles/Notes.module.css"
 import { IoAdd } from "react-icons/io5";
 
 const Title = dynamic(() => import("@/components/Title"))
-const Search = dynamic(() => import("@/components/Search"),{ssr:false})
-const ListNotes = dynamic(() => import("@/components/notes/ListNotes"),{ssr:false})
+const Search = dynamic(() => import("@/components/Search"), { ssr: false })
+const ListNotes = dynamic(() => import("@/components/notes/ListNotes"), { ssr: false })
 
 export const metadata = {
     title: "Notas",
@@ -14,7 +14,7 @@ export const metadata = {
 }
 const aditional = [
     {
-        name: <div className="d-flex" style={{ gap: "5px" }}><IoAdd />Agregar Nota</div>,
+        name: <><IoAdd />Agregar Nota</>,
         path: "#newNote"
     }
 ]

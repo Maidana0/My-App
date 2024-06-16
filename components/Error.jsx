@@ -11,10 +11,10 @@ const Error = ({ message, status, height }) => {
     const statusQuery = params?.has("status") && params.get("status")
 
     return (
-        <div style={{ height: height ? height : "100vh", width: "100%" }}
+        <div style={{ minHeight: height ?? "80vh", padding: "2rem 0", width: "100%", gap: "3rem", fontSize: "1.3em" }}
             className="d-flex bg-d f-column-center"
         >
-            <h1 style={{ margin: "1rem auto", textAlign: "center" }}>Ups! Ocurrio un error {status ? status : statusQuery ? `- ${statusQuery}` : ""}</h1>
+            <h1 style={{ textAlign: "center", padding: "0 1rem" }}>Ups! Ocurrio un error {status ? status : statusQuery ? `- ${statusQuery}` : ""}</h1>
             <Image
                 priority
                 src={'/error.gif'}
@@ -22,11 +22,11 @@ const Error = ({ message, status, height }) => {
                 height={144}
                 alt="Error"
             />
-            <p style={{ margin: "1rem auto", textAlign: "center", width: "90%" }}>
+            <p style={{ textAlign: "center", width: "90%" }}>
                 {message ? message : messageQuery ? messageQuery : "This page could not be found."}
             </p>
             <Link
-                style={{ color: "yellow", margin: "1rem auto 2rem" }}
+                style={{ color: "yellow" }}
                 href={'/'}>Volver al inicio</Link>
         </div>
     )

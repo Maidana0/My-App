@@ -1,5 +1,7 @@
 import styles from "@/styles/Tasks.module.css"
 import dynamic from "next/dynamic"
+import { MdOutlineDone, MdOutlineDoneAll } from "react-icons/md";
+import { GiMuscleFat, GiMuscleUp  } from "react-icons/gi";
 
 export const metadata = {
     title: "Tareas",
@@ -17,15 +19,15 @@ const List = dynamic(() => import("@/components/tasks/List"), {
 })
 
 const paths = [
-    { name: "en progreso", path: "/tareas/en-progreso" },
-    { name: "realizadas", path: "/tareas/realizadas" },
+    { name: <><GiMuscleFat /> en progreso</>, path: "/tareas/en-progreso" },
+    { name: <><MdOutlineDoneAll /> realizadas</>, path: "/tareas/realizadas" },
 ]
 
 
 export default function Page({ params }) {
     const { list } = params
     const correctParams = list == "pendientes" || paths.some(({ path }) => path.split("/").pop() == list);
-    if (!correctParams) { return <NotFound message={"En tareas, no existe la siguiente sección: /" + list}/> }
+    if (!correctParams) { return <NotFound message={"En tareas, no existe la siguiente sección: /" + list} /> }
 
     return (
         <>

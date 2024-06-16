@@ -24,20 +24,15 @@ const Title = ({ title, linkTitle, linkContent }) => {
             {linkContent && <div className={`d-flex ${styles.title_children_contain}`}>{
 
 
-                linkContent.length == 1 ?
-                    <Link href={linkContent[0].path} >
-                        {linkContent[0].name}
-                    </Link>
-                    :
-                    linkContent.map((child, i) => {
-                        const isActive = pathName.endsWith(child.path)
-
-                        return (
-                            <Link className={isActive ? styles.active : ''} key={i} href={child.path} >
-                                {child.name}
-                            </Link>
-                        )
-                    })
+                linkContent.map((child, i) => {
+                    const isActive = pathName.endsWith(child.path)
+                    return (
+                        <Link className={`d-flex ${isActive ? styles.active : ''}`} key={i} href={child.path} >
+                            
+                            {child.name}
+                        </Link>
+                    )
+                })
 
 
             }</div>}
