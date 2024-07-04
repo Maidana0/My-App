@@ -4,6 +4,9 @@ import fetchData from "@/utils/fetch";
 import { transformDate } from "@/utils/utils";
 import { UseContext } from "../context/Context";
 
+import MicrophoneIcons from "../MicrophoneIcons";
+import useSpeekToText from "@/hooks/useSpeechToText";
+
 const Parrafos = ({ text }) => {
   const parrafos = text.split("\n")
   return parrafos.map((parrafo, index) => (
@@ -48,11 +51,31 @@ const OneNote = ({ setError, note, updateList, styles }) => {
   }
 
 
+  const { startListening, stopListening, isListening, transcript } = useSpeekToText({
+    continuous: true,
+    interimResults: true,
+  })
+
+  const handleListening = () => {
+    if (isListening) {
+      setText(prevText => prevText + (transcript.length ? (prevText.length ? " " : "") + transcript : ""))
+      stopListening()
+      return
+    }
+    startListening()
+  }
+
   return (
     <div className={`${styles.note} ${updateText ? styles.updating_note : ""}`} >
       {
         updateText
-          ? <textarea value={text} required minLength={2} autoComplete="off" onChange={(e) => setText(e.target.value)}></textarea>
+          ?
+          <textarea autoComplete="off" required           minLength={2}
+          placeholder="Nueva nota..."
+          name="text"
+          value={isListening ? text + (transcript.length ? (text.length ? " " : "") + transcript : "") : text}
+          onChange={(e) => setText(e.target.value)}
+      />
           : <div className={styles.p_container}>
             <Parrafos text={note.text} />
           </div>
@@ -61,6 +84,10 @@ const OneNote = ({ setError, note, updateList, styles }) => {
 
       <div className={`d-flex ${styles.note_footer}`}>
         <small>{transformDate(note.updatedAt, true)}</small>
+
+        {
+          updateText && <MicrophoneIcons isListening={isListening} handleListening={handleListening} />
+        }
 
         <div className="d-flex" style={{ gap: "8px" }}>
           {

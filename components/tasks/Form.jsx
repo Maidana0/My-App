@@ -1,8 +1,26 @@
 import fetchData from "@/utils/fetch";
 import { IoSendSharp } from "react-icons/io5";
 import { UseContext } from "../context/Context";
+import MicrophoneIcons from "../MicrophoneIcons";
+import useSpeekToText from "@/hooks/useSpeechToText";
+import { useState } from "react";
+
 const Form = ({ setList, setError, styles }) => {
     const { handleMessage } = UseContext()
+    const [text, setText] = useState("")
+    const { startListening, stopListening, isListening, transcript } = useSpeekToText({
+        continuous: true,
+        interimResults: true,
+    })
+
+    const handleListening = () => {
+        if (isListening) {
+            setText(prevText => prevText + (transcript.length ? (prevText.length ? " " : "") + transcript : ""))
+            stopListening()
+            return
+        }
+        startListening()
+    }
 
     const handleSubmit = async function (e) {
         e.preventDefault()
@@ -27,7 +45,17 @@ const Form = ({ setList, setError, styles }) => {
 
     return (
         <form className={`d-flex ${styles.form}`} onSubmit={handleSubmit}>
-            <input type="text" name="task" autoComplete="off" placeholder="Escribir nueva tarea..." />
+            <div className="d-flex f-center" style={{width:"40px"}}>
+            <MicrophoneIcons isListening={isListening} handleListening={handleListening} />
+            </div>
+            <textarea autoComplete="off" required
+                placeholder="Nueva tarea..."
+                name="task"
+                value={isListening ? text + (transcript.length ? (text.length ? " " : "") + transcript : "") : text}
+                onChange={(e) => setText(e.target.value)}
+            />
+
+            {/* <input type="text" name="task" autoComplete="off" placeholder="Escribir nueva tarea..." /> */}
             <button type="submit" className="d-flex" >
                 <IoSendSharp color="#fff" size={"1.7em"} title="Agregar tarea" />
             </button>

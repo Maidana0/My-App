@@ -44,9 +44,9 @@ const ListNotes = ({ styles }) => {
     <>
       <div className={"d-flex " + styles.sort_select_contain}>
         <label htmlFor="sort">Ordenar desde la fecha:</label>
-        <select name="sort" id="sort" onChange={(e) => { e.target.value != sort && setSort(e.target.value) }}>
-          <option value={1}>más antigua</option>
-          <option value={-1} defaultChecked>más reciente</option>
+        <select name="sort" id="sort" value={sort} onChange={(e) => { e.target.value != sort && setSort(e.target.value) }}>
+          <option value={1}>más vieja</option>
+          <option value={-1}>más reciente</option>
         </select>
       </div>
 

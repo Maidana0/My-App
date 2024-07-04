@@ -111,6 +111,11 @@ footer svg:hover {
     display: flex;
     align-items: center;
 }
+.f-center{
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+}
 
 .f-column-center {
     flex-direction: column;
