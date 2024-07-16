@@ -108,6 +108,9 @@
 
 @media (max-width: 480px),
 (max-height: 480px) {
+    .navbar_contain {
+        padding: 0 .5rem;
+    }
     .nav_items a {
         font-size: 2em;
     }

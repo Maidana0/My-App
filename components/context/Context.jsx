@@ -26,8 +26,7 @@ export const ContextProvider = ({ children }) => {
     const logout = async () => {
         const data = await fetchData("account", { isLocalReq: true })
         if (!data?.success) {
-            console.log("error");
-            setMessage({ success: false, message: "Ocurrio un error, intente cerrar sesión nuevamente." })
+            setMessage({ success: false, message: "Ocurrio un error para cerrar sesión. Recargue la página." })
             return
         }
 

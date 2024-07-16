@@ -36,7 +36,7 @@ const Form = ({ setList, setError, styles }) => {
             }
             handleMessage(data)
             setList()
-            e.target.task.value = ""
+            setText("")
 
         }
 

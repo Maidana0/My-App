@@ -5,7 +5,8 @@ export const configToken = {
     httpOnly: true,
     secure: process.env.ENVIRONMENT == "production" ? true : false,
     // sameSite: "none",
-    maxAge: 864000000,
+    // maxAge: 864000000,
+    maxAge: 864000, // 10D
     path: '/',
 }
 
