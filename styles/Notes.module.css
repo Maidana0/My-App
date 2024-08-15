@@ -145,13 +145,13 @@
 .sort_select_contain select {
     width: 230px;
     font-size: 1em;
-    padding: .6rem 1rem;
+    padding: .7rem 1rem;
     background-color: var(--background-color);
     color: inherit;
     border: none;
     outline: none;
     text-transform: uppercase;
-    text-align: center;
+    text-align: left;
     border-radius: 8px;
 
     /* Oculta la flecha predeterminada */
@@ -159,7 +159,7 @@
     -moz-appearance: none;
     appearance: none;
     background-image: url('/images/double_arrow_down.svg');
-    background-position: right center;
+    background-position: 95% center;
     background-repeat: no-repeat;
 }
 

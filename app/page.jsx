@@ -8,7 +8,7 @@ const filter = { filter: "drop-shadow(0 0 10px var(--primary-color))" }
 
 export const metadata = {
   title: 'My Personal Web App',
-  description: 'Aplicación web personal para atender y ordenar ciertas cuestiones.',
+  description: 'Aplicación web personal para guardar y organizar tus horarios, notas y tareas de forma totalmente segura.',
 }
 
 // EN PROCESO DE DISEÑO...

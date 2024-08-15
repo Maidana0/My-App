@@ -52,7 +52,7 @@ const useSpeekToText = (options) => {
                     .replace(/\s+([.,;?!])/g, '$1')
                     .replace(/\n+\s/g, '\n')
                     .replace(/\s+\n/g, '\n');
-
+                    
                 setTranscript(interimTranscript);
             };
 
@@ -63,8 +63,10 @@ const useSpeekToText = (options) => {
         }
 
         recognition.onend = () => {
-            setIsListening(false)
-            setTranscript("")
+            setIsListening(false);
+            // if (!isMobile()) {
+                setTranscript("")
+            // }
         }
 
         return () => {
@@ -95,5 +97,9 @@ const useSpeekToText = (options) => {
         stopListening
     }
 }
+
+export const isMobile = () => {
+    return typeof window !== "undefined" && /Mobi|Android/i.test(navigator.userAgent);
+};
 
 export default useSpeekToText

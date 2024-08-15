@@ -13,6 +13,11 @@
 
 .name_page {
     font-size: 2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    max-width: 190px;
+    padding-right: 5px;
 }
 
 .backdrop {
@@ -111,6 +116,7 @@
     .navbar_contain {
         padding: 0 .5rem;
     }
+
     .nav_items a {
         font-size: 2em;
     }

@@ -1,9 +1,7 @@
-import fetchData from "@/utils/fetch";
-import { useState } from "react";
-import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import { useState } from "react"
 import { UseContext } from "../context/Context"
-
-
+import fetchData from "@/utils/fetch"
+import PasswordInput from "./PasswordInput"
 
 const handleErrorField = (fieldMessage) => {
     let splitMessage = fieldMessage.split(" ")
@@ -13,65 +11,7 @@ const handleErrorField = (fieldMessage) => {
     return object
 }
 
-
-const PasswordInput = ({ styles }) => {
-    const [visibiltyPassword, setVisibiltyPassword] = useState(false)
-    const handleVisibility = () => setVisibiltyPassword(!visibiltyPassword)
-    return (
-        <div className={`d-flex ${styles.password_contain}`}>
-            <input minLength={8} name="password" autoComplete="off" type={visibiltyPassword ? "text" : "password"} placeholder="Contraseña" />
-
-            {visibiltyPassword
-                ? <IoMdEyeOff size="1.5em" onClick={handleVisibility} />
-                : <IoMdEye size="1.5em" onClick={handleVisibility} />}
-
-        </div>
-    )
-}
-
-
-export const LoginForm = ({ router, styles }) => {
-    const [errorField, setErrorField] = useState([])
-    const { login, handleMessage } = UseContext()
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        const data = await fetchData("account",
-            {
-                isLocalReq: true, method: "POST",
-                body: { email: e.target.email.value, password: e.target.password.value }
-            })
-
-        if (data.token) {
-            login()
-            router.refresh()
-            return
-        }
-        if (data.error == "Bad Request") {
-            setErrorField(data.message)
-            return
-        } else if (data.error == "Unauthorized") {
-            setErrorField([data.message])
-            return
-        }
-
-        handleMessage({ success: false, message: "Ocurrio un error, intentelo mas tarde." })
-    }
-    return (
-        <form onSubmit={handleSubmit} >
-            <input type="email" name="email" placeholder="Correo electrónico" autoComplete="off" />
-
-            <PasswordInput styles={styles} />
-
-            {errorField.map((msg, i) => <span key={i}>- {msg}</span>)}
-
-            <input className={styles.btn_signIn} type="submit" value={"Iniciar Sesión"} />
-
-        </form >
-    )
-}
-
-export const RegisterForm = ({ closeModal, styles }) => {
+const RegisterForm = ({ closeModal, styles }) => {
     const { handleMessage } = UseContext()
     const [errorField, setErrorField] = useState({})
 
@@ -133,3 +73,5 @@ export const RegisterForm = ({ closeModal, styles }) => {
         </form>
     )
 }
+
+export default RegisterForm

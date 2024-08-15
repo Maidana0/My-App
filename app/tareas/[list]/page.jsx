@@ -31,7 +31,7 @@ export default function Page({ params }) {
 
     return (
         <>
-            <Title linkTitle={{ name: "Mis Tareas", path: "/tareas/pendientes" }} linkContent={paths} />
+            <Title linkTitle={{ name: "Mis Tareas Pendientes", path: "/tareas/pendientes" }} linkContent={paths} />
             <Search from={"tarea"} query={"task"} />
 
             <div className={`d-flex f-column-center ${styles.tasks_list_container}`}>

@@ -11,7 +11,7 @@ export default function Header({ font }) {
     return (
         <header>
             <nav className={`${font}  ${styles.navbar_contain} d-flex bg-d`}>
-                <div className="d-flex">
+                <div className="d-flex" style={{ overflow: "hidden" }}>
                     <Image src={"/brook_icon.png"} alt="app-icon" width={44} height={44} />
                     <Link className={styles.name_page} href={'/'}>My Personal Web App</Link>
                 </div>
