@@ -44,16 +44,16 @@ const ListNotes = ({ styles }) => {
     <>
       <div className={"d-flex " + styles.sort_select_contain}>
         <label htmlFor="sort">Ordenar desde la fecha:</label>
-        <select name="sort" id="sort" onChange={(e) => { e.target.value != sort && setSort(e.target.value) }}>
+        <select name="sort" id="sort" value={sort} onChange={(e) => { e.target.value != sort && setSort(e.target.value) }}>
           <option value={1}>más antigua</option>
-          <option value={-1} defaultChecked>más reciente</option>
+          <option value={-1}>más reciente</option>
         </select>
       </div>
 
 
       <div className={styles.notes_container}>
         {
-          !text & sort == -1
+          !text && sort == -1
             ? <NewNote setError={setError} styles={styles} updateList={handleChangesNotes} />
             : ""
         }
@@ -65,7 +65,7 @@ const ListNotes = ({ styles }) => {
         }
 
         {
-          !text & (!sort || sort == 1) && <NewNote setError={setError} styles={styles} updateList={handleChangesNotes} />
+          !text && (!sort || sort == 1) && <NewNote setError={setError} styles={styles} updateList={handleChangesNotes} />
         }
 
       </div>

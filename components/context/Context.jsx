@@ -20,24 +20,22 @@ export const ContextProvider = ({ children }) => {
         setMessage(message)
         setTimeout(() => {
             setMessage(false);
-        }, 3500);
+        }, 5000);
     }
 
     const logout = async () => {
         const data = await fetchData("account", { isLocalReq: true })
         if (!data?.success) {
-            console.log("error");
-            setMessage({ success: false, message: "Ocurrio un error, intente cerrar sesión nuevamente." })
+            handleMessage({ success: false, message: "Ocurrio un error para cerrar sesión. Recargue la página." })
             return
         }
-
         setUser("disconnected")
-        setMessage(data)
+        handleMessage(data)
     }
 
     const login = () => {
-
         setUser("connected")
+        handleMessage({ success: true, message: "Sesión iniciada correctamente." })
     }
 
     return <Context.Provider value={{
@@ -63,7 +61,6 @@ export const ContextProvider = ({ children }) => {
                         </div>
                     </div>
                 </div>
-
                 : ""
         }
 

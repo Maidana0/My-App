@@ -32,6 +32,13 @@ const List = ({ list, styles }) => {
         getTasks()
     }, [task, changes])
 
+    useEffect(() => {
+        if (listContain.current) {
+            setTimeout(() => {
+                listContain.current.scrollTop = listContain.current.scrollHeight ?? 0
+            }, 1000)
+        }
+    }, [taskList])
 
     const statusStyle = list == 'en-progreso' ? styles.in_progress : list == 'realizadas' ? styles.done : styles.pending
 

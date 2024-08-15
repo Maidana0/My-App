@@ -13,11 +13,16 @@
 
 .name_page {
     font-size: 2em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-wrap: nowrap;
+    max-width: 190px;
+    padding-right: 5px;
 }
 
 .backdrop {
     background: var(--neutral-mutted-color);
-    backdrop-filter: blur(2.5px);
+    backdrop-filter: blur(3px);
     position: fixed;
     width: 100%;
     height: 100%;
@@ -108,6 +113,10 @@
 
 @media (max-width: 480px),
 (max-height: 480px) {
+    .navbar_contain {
+        padding: 0 .5rem;
+    }
+
     .nav_items a {
         font-size: 2em;
     }

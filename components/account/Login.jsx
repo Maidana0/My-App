@@ -1,6 +1,6 @@
 "use client"
 import Buttons from "./Buttons"
-import { LoginForm } from "./Forms"
+import LoginForm from "./LoginForm"
 import { useRouter } from "next/navigation"
 
 
@@ -12,7 +12,7 @@ const Login = ({ styles }) => {
   return (
     <div className={`d-flex ${styles.login_contain}`}>
 
-      <LoginForm styles={styles} router={router}/>
+      <LoginForm styles={styles} router={router} />
 
 
       <Buttons styles={styles} button={{

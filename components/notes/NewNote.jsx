@@ -1,14 +1,32 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { transformDate } from "@/utils/utils"
 import fetchData from "@/utils/fetch"
-
 import { UseContext } from "../context/Context";
+import MicrophoneIcons from "../MicrophoneIcons";
+import useSpeekToText, { isMobile } from "@/hooks/useSpeechToText";
 
 
 const NewNote = ({ styles, updateList, setError }) => {
-    const [text, setText] = useState('')
+    const [text, setText] = useState("")
     const date = transformDate(false, true)
+
     const { handleMessage } = UseContext()
+
+    const { startListening, stopListening, isListening, transcript } = useSpeekToText({
+        continuous: !isMobile(),
+        interimResults: !isMobile(),
+    })
+
+    const handleListening = () => {
+        if (isListening) {
+            if (!isMobile()) {
+                setText(prevText => prevText + (transcript.length ? (prevText.length ? " " : "") + transcript : ""))
+            }
+            stopListening()
+            return
+        }
+        startListening()
+    }
 
     const addNote = async (e) => {
         e.preventDefault()
@@ -22,21 +40,34 @@ const NewNote = ({ styles, updateList, setError }) => {
 
         data.message && handleMessage(data)
         updateList()
-        setText('')
-
+        setText("")
     }
+
+    useEffect(() => {
+        if (!isMobile()) return
+        if (transcript.length > 2) {
+            setText(prevText => prevText + (transcript.length ? (prevText.length ? " " : "") + transcript : ""))
+        }
+    }, [transcript])
 
     return (
         <form id={"newNote"} className={styles.new_note} onSubmit={addNote} >
 
             <textarea autoComplete="off" required
                 placeholder="Nueva nota..."
-                name="text" value={text}
-                onChange={(e) => setText(e.target.value)}
+                name="text"
+                value={isListening
+                    ? text + (transcript.length ? (text.length ? " " : "") + transcript : "")
+                    : text
+                }
+                onChange={(e) => isListening ? stopListening() : setText(e.target.value)}
             />
 
             <div className="d-flex">
                 <small>{date}</small>
+
+                <MicrophoneIcons isListening={isListening} handleListening={handleListening} />
+
                 <input type="submit" value="Agregar" />
             </div>
 

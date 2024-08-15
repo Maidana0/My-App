@@ -29,10 +29,10 @@ export async function GET(request) {
 
         const decrypted = decryptedToken(encrypted)
         const data = await fetchData("user/logout", { authToken: decrypted })
-        if (data.success) {
-            cookies().delete("logged")
-            cookies().delete("token")
-        }
+        // if (data.success) {
+        cookies().delete("logged")
+        cookies().delete("token")
+        // }
 
         return NextResponse.json(data)
     } catch (error) {
