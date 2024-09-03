@@ -1,6 +1,6 @@
 "use client"
 import { useState, useRef, useEffect } from 'react'
-import { useSearchParams, } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import Task from './Task'
 import dynamic from 'next/dynamic'
 import fetchData from '@/utils/fetch'
@@ -10,7 +10,9 @@ const Error = dynamic(() => import("@/components/Error"), { ssr: false })
 
 const List = ({ list, styles }) => {
     const listContain = useRef()
-    const task = useSearchParams().get('task')
+    const searchParams = useSearchParams();
+    const task = searchParams.get('task');
+    const category = searchParams.get('category');
     const [error, setError] = useState({ error: false, message: "", status: 404 })
     const [taskList, setTaskList] = useState([])
     const [changes, setChanges] = useState(false)
@@ -19,7 +21,7 @@ const List = ({ list, styles }) => {
         async function getTasks() {
             const status = list == 'pendientes' ? 'pending' : list == 'en-progreso' ? 'in-progress' : 'done'
 
-            const queryParams = `?status=${status}&task=${task ? task : ''}`
+            const queryParams = `?status=${status}&task=${task ?? ''}&category=${category ?? ''}`
             const path = 'tasks' + queryParams
 
             const data = await fetchData(path, { isLocalReq: true })
@@ -30,12 +32,14 @@ const List = ({ list, styles }) => {
             setTaskList(data)
         }
         getTasks()
-    }, [task, changes])
+    }, [task, category, changes])
 
     useEffect(() => {
         if (listContain.current) {
             setTimeout(() => {
-                listContain.current.scrollTop = listContain.current.scrollHeight ?? 0
+                if (listContain.current) {
+                    listContain.current.scrollTop = listContain.current.scrollHeight ?? 0;
+                }
             }, 1000)
         }
     }, [taskList])

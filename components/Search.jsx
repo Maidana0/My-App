@@ -5,7 +5,9 @@ import { useState } from "react"
 
 
 const Search = ({ from, query }) => {
-    const queryParam = useSearchParams().get(query)
+    const useParams = useSearchParams()
+    const queryParam = useParams.get(query)
+    const categoryParam = useParams.get("category")
     const [value, setValue] = useState(queryParam)
 
     const router = useRouter()
@@ -15,8 +17,12 @@ const Search = ({ from, query }) => {
             className={`d-flex ${styles.form}`}
             onSubmit={(e) => {
                 e.preventDefault()
-                if (value) {
-                    value.trim().length >= 1 && router.push(`?${query}=${value.trim()}`)
+                if (value && value.trim().length >= 1) {
+                    if (useParams.has("category")) {
+                        router.push(`?category=${categoryParam}&${query}=${value.trim()}`)
+                        return
+                    }
+                    router.push(`?${query}=${value.trim()}`)
                 }
             }}
         >
@@ -39,6 +45,10 @@ const Search = ({ from, query }) => {
                     if (queryParam) {
                         e.preventDefault()
                         setValue('')
+                        if (useParams.has("category")) {
+                            router.push(`?category=${categoryParam}`)
+                            return
+                        }
                         router.push(`?`)
                     }
                 }}

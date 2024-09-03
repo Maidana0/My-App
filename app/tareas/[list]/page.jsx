@@ -1,7 +1,7 @@
 import styles from "@/styles/Tasks.module.css"
 import dynamic from "next/dynamic"
-import { MdOutlineDone, MdOutlineDoneAll } from "react-icons/md";
-import { GiMuscleFat, GiMuscleUp  } from "react-icons/gi";
+import { MdOutlineDoneAll } from "react-icons/md";
+import { GiMuscleFat } from "react-icons/gi";
 
 export const metadata = {
     title: "Tareas",
@@ -12,6 +12,7 @@ const NotFound = dynamic(() => import("@/app/not-found"), { ssr: false })
 
 const Title = dynamic(() => import("@/components/Title"))
 const Search = dynamic(() => import("@/components/Search"), { ssr: false })
+const CategoryFilter = dynamic(() => import("@/components/tasks/CategoryFilter"), { ssr: false })
 
 const List = dynamic(() => import("@/components/tasks/List"), {
     loading: () => <p style={{ margin: "auto" }}>Cargando Tareas...</p>,
@@ -32,7 +33,10 @@ export default function Page({ params }) {
     return (
         <>
             <Title linkTitle={{ name: "Mis Tareas Pendientes", path: "/tareas/pendientes" }} linkContent={paths} />
-            <Search from={"tarea"} query={"task"} />
+            <div className="d-flex">
+                <Search from={"tarea"} query={"task"} />
+                <CategoryFilter />
+            </div>
 
             <div className={`d-flex f-column-center ${styles.tasks_list_container}`}>
                 <List

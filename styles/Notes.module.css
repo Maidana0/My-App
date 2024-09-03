@@ -137,7 +137,7 @@
     padding: .5rem 1rem;
     justify-content: space-evenly;
     text-align: center;
-    margin: auto;
+    margin: 1rem auto 0;
     width: 85%;
     border-radius: 12px;
 }
