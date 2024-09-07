@@ -11,8 +11,8 @@ export const metadata = {
 const NotFound = dynamic(() => import("@/app/not-found"), { ssr: false })
 
 const Title = dynamic(() => import("@/components/Title"))
-const Search = dynamic(() => import("@/components/Search"), { ssr: false })
-const CategoryFilter = dynamic(() => import("@/components/tasks/CategoryFilter"), { ssr: false })
+const Search = dynamic(() => import("@/components/filters/Search"), { ssr: false })
+const SortBy = dynamic(() => import("@/components/filters/SortBy"), { ssr: false })
 
 const List = dynamic(() => import("@/components/tasks/List"), {
     loading: () => <p style={{ margin: "auto" }}>Cargando Tareas...</p>,
@@ -25,7 +25,7 @@ const paths = [
 ]
 
 
-export default function Page({ params }) {
+export default async function Page({ params }) {
     const { list } = params
     const correctParams = list == "pendientes" || paths.some(({ path }) => path.split("/").pop() == list);
     if (!correctParams) { return <NotFound message={"En tareas, no existe la siguiente sección: /" + list} /> }
@@ -35,14 +35,19 @@ export default function Page({ params }) {
             <Title linkTitle={{ name: "Mis Tareas Pendientes", path: "/tareas/pendientes" }} linkContent={paths} />
             <div className="d-flex">
                 <Search from={"tarea"} query={"task"} />
-                <CategoryFilter />
+
+                <SortBy
+                    defaultOption={"Categorias"}
+                    name={"category"}
+                />
             </div>
 
+
             <div className={`d-flex f-column-center ${styles.tasks_list_container}`}>
-                <List
+                {/* <List
                     list={list}
                     styles={styles}
-                />
+                /> */}
             </div>
         </>
     )

@@ -4,7 +4,8 @@ import styles from "@/styles/Notes.module.css"
 import { IoAdd } from "react-icons/io5";
 
 const Title = dynamic(() => import("@/components/Title"))
-const Search = dynamic(() => import("@/components/Search"), { ssr: false })
+const Search = dynamic(() => import("@/components/filters/Search"), { ssr: false })
+const SortBy = dynamic(() => import("@/components/filters/SortBy"), { ssr: false })
 const ListNotes = dynamic(() => import("@/components/notes/ListNotes"), { ssr: false })
 
 export const metadata = {
@@ -23,8 +24,18 @@ export default function Notas() {
     return (
         <>
             <Title title={"Mis Notas"} linkContent={aditional} />
-            <Search from={"nota"} query={"text"} />
 
+            <div className={`d-flex`}>
+                <Search from={"nota"} query={"text"} />
+                <SortBy
+                    name={"sort"}
+                    defaultOption={"Ordenar desde:"}
+                    staticOptions={[
+                        { value: 1, label: "más antigua" },
+                        { value: -1, label: "más reciente" },
+                    ]}
+                />
+            </div>
             <ListNotes styles={styles} />
         </>
     )

@@ -24,7 +24,7 @@
 
 .title_contain a {
     padding: 0 5px;
-    transition: all .25s ease-in-out;
+    transition: color .3s ease;
     gap:8px;
 }
 

@@ -15,8 +15,9 @@
 .inputText {
     width: calc(100% - 120px);
     padding: 0 1rem;
-    background-color: var(--background-dark);
+    background-color: var(--neutral-mutted-color);
     border-radius: 8px 0 0 8px;
+    transition: all ease .3s;
 }
 
 .inputText:disabled {
@@ -30,14 +31,33 @@
     cursor: pointer;
     border-radius: 0 8px 8px 0;
     background-color: var(--background-color);
+    transition: all ease .3s;
 }
 
 .delete {
-    background-color: rgba(190, 49, 68, 0.8)
+    transition: all ease .3s;
+    background-color: rgba(190, 49, 68, 0.8);
 }
 
 @media (max-width: 480px) {
     .form {
         width: 96%;
     }
+}
+
+.input:hover {
+    background-color: var(--secondary-color);
+}
+
+.delete:hover {
+    background-color: rgb(190, 0, 25);
+}
+
+.inputText:hover,
+.inputText:focus {
+    background-color: var(--background-dark);
+}
+
+.inputText:disabled:hover {
+    background-color: rgba(133, 25, 57, 0.932);
 }
