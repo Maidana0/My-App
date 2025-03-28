@@ -4,6 +4,7 @@ import fetchData from "@/utils/fetch"
 import { UseContext } from "../context/Context";
 import MicrophoneIcons from "../MicrophoneIcons";
 import useSpeekToText, { isMobile } from "@/hooks/useSpeechToText";
+import { amatic } from "@/lib/fonts";
 
 
 const NewNote = ({ styles, updateList, setError }) => {
@@ -68,7 +69,7 @@ const NewNote = ({ styles, updateList, setError }) => {
 
                 <MicrophoneIcons isListening={isListening} handleListening={handleListening} />
 
-                <input type="submit" value="Agregar" />
+                <input type="submit" value="Agregar" className={amatic.className} />
             </div>
 
         </form>

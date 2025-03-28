@@ -29,6 +29,9 @@ export default function SortBy({ name, defaultOption, staticOptions }) {
 
         if (!searchParams.has(name))
             return router.push(value + "&" + searchParams.toString())
+        
+        // HAY ALGO QUE NO FUNCIONA AL INTENTAR PONER DOS O MÁS PARAMETROS, 
+        // EJ EN LA BUSQUEDA SE BORRA EL TASK Y SOLO QUEDA EL =BUSCADA
 
         // Si ya existe el parametro, cambiar su valor manteniendo los demas intactos
 

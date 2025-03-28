@@ -3,6 +3,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import styles from "@/styles/components/Message.module.css"
 import fetchData from "@/utils/fetch";
+import { amatic } from "@/lib/fonts";
 const Context = createContext()
 
 export const ContextProvider = ({ children }) => {
@@ -54,7 +55,7 @@ export const ContextProvider = ({ children }) => {
         {
             message
                 ?
-                <div className={`${styles.message_contain}`}>
+                <div className={`${styles.message_contain} ${amatic.className}`}>
                     <div >
                         <div className={`${message ? message.success ? styles.success : styles.fail : ""}`}>
                             <p>{message.message} </p>

@@ -1,8 +1,8 @@
 import '@/styles/globals.css'
-import { Amatic_SC, Roboto_Mono } from 'next/font/google'
 import Header from '@/components/navbar/Header'
 import { Suspense } from 'react'
 import { ContextProvider } from '@/components/context/Context'
+import { amatic, roboto } from '@/lib/fonts'
 
 
 export const metadata = {
@@ -17,8 +17,7 @@ export const metadata = {
 }
 
 export const viewport = { themeColor: '#17429f' }
-export const amatic = Amatic_SC({ weight: "700", subsets: ["latin"] })
-const roboto = Roboto_Mono({ weight: ["300", "400", "500"], style: ["normal"], subsets: ["latin"] })
+
 
 export default function RootLayout({ children }) {
   return (

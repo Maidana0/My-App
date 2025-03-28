@@ -29,7 +29,7 @@ export default function Notas() {
                 <Search from={"nota"} query={"text"} />
                 <SortBy
                     name={"sort"}
-                    defaultOption={"Ordenar desde:"}
+                    defaultOption={"Ordenar"}
                     staticOptions={[
                         { value: 1, label: "más antigua" },
                         { value: -1, label: "más reciente" },
