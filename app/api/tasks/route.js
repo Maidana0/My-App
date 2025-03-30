@@ -7,7 +7,8 @@ import fetchData from '@/utils/fetch';
 
 export async function GET(request) {
     try {
-        const encrypted = cookies().get("token").value
+        const cookieStore = await cookies()
+        const encrypted = cookieStore.get("token").value
         const decrypted = decryptedToken(encrypted)
 
         const path = "tasks" + request.nextUrl.search
@@ -25,7 +26,8 @@ export async function GET(request) {
 
 export async function POST(request) {
     try {
-        const encrypted = cookies().get("token").value
+        const cookieStore = await cookies()
+        const encrypted = cookieStore.get("token").value
         const decrypted = decryptedToken(encrypted)
         const task = await request.json()
         const data = await fetchData("tasks", { method: "POST", authToken: decrypted, body: task })

@@ -6,11 +6,12 @@ import { configToken, encryptedToken } from '@/utils/utils';
 // LOGIN
 export async function GET(request) {
     try {
+        const cookieStore = await cookies()
         const acessToken = request.nextUrl.searchParams.get("accessToken") || false
         if (acessToken) {
             const encrypted = encryptedToken(acessToken)
-            cookies().set("token", encrypted, configToken)
-            cookies().set("logged", true, configToken);
+            cookieStore.set("token", encrypted, configToken)
+            cookieStore.set("logged", true, configToken);
             return NextResponse.redirect(new URL('/', request.url))
         }
 

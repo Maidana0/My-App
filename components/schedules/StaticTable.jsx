@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
-import Table from "./Table";
-import ResponsiveTable from "./ResponsiveTable";
+import dynamic from "next/dynamic";
+const Table = dynamic(() => import("./Table"), { ssr: false });
+const ResponsiveTable = dynamic(() => import("./ResponsiveTable"), { ssr: false });
 
 const formStyle = {
     display: "flex",
@@ -42,7 +43,8 @@ const StaticTable = ({ view, days, hours }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState("");
 
-    const handleLogin = () => {
+    const handleLogin = (e) => {
+        e.preventDefault()
         const fixedPassword = "ver"; // Contraseña fija solo para no mostrar mis datos estaticos a cualquiera xd
         if (password === fixedPassword) {
             setIsAuthenticated(true);

@@ -7,7 +7,8 @@ import fetchData from '@/utils/fetch';
 
 export async function PUT(request) {
     try {
-        const encrypted = cookies().get("token").value
+        const cookieStore = await cookies()
+        const encrypted = cookieStore.get("token").value
         const decrypted = decryptedToken(encrypted)
 
         const path = "notes" + request.nextUrl.pathname.split("notes")[1]
@@ -27,7 +28,8 @@ export async function PUT(request) {
 
 export async function DELETE(request) {
     try {
-        const encrypted = cookies().get("token").value
+        const cookieStore = await cookies()
+        const encrypted = cookieStore.get("token").value
         const decrypted = decryptedToken(encrypted)
 
         const path = "notes" + request.nextUrl.pathname.split("notes")[1]

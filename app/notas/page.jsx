@@ -4,9 +4,9 @@ import styles from "@/styles/Notes.module.css"
 import { IoAdd } from "react-icons/io5";
 
 const Title = dynamic(() => import("@/components/Title"))
-const Search = dynamic(() => import("@/components/filters/Search"), { ssr: false })
-const SortBy = dynamic(() => import("@/components/filters/SortBy"), { ssr: false })
-const ListNotes = dynamic(() => import("@/components/notes/ListNotes"), { ssr: false })
+const Search = dynamic(() => import("@/components/filters/Search"))
+const SortBy = dynamic(() => import("@/components/filters/SortBy"))
+const ListNotes = dynamic(() => import("@/components/notes/ListNotes"))
 
 export const metadata = {
     title: "Notas",
