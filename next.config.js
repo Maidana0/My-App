@@ -12,6 +12,13 @@ const nextConfig = {
         SECRET_KEY: process.env.NEXT_PUBLIC_SECRET_KEY,
 
     },
+    // staleTimes  (* experimental and subject to change *)
+    experimental: {
+        staleTimes: {
+            dynamic: 60,
+            static: 60 * 60 * 24,
+        },
+    },
 }
 
 

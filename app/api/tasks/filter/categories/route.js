@@ -7,7 +7,8 @@ import fetchData from '@/utils/fetch';
 
 export async function GET() {
     try {
-        const encrypted = cookies().get("token").value
+        const cookieStore = await cookies()
+        const encrypted = cookieStore.get("token").value
         const decrypted = decryptedToken(encrypted)
         const data = await fetchData("tasks/categories", { authToken: decrypted })
         return NextResponse.json(data)

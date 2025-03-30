@@ -1,5 +1,5 @@
 "use client"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import Task from "./Task"
 import dynamic from "next/dynamic"
@@ -40,7 +40,7 @@ const List = ({ list, styles }) => {
                 if (listContain.current) {
                     listContain.current.scrollTop = listContain.current.scrollHeight ?? 0;
                 }
-            }, 1000)
+            }, 800)
         }
     }, [taskList])
 
@@ -52,10 +52,12 @@ const List = ({ list, styles }) => {
     return (<>
 
         <div ref={listContain} className={`d-flex  ${styles.list_container} ${statusStyle}`}>
-            {
-                taskList.map((task, i) =>
-                    <Task setError={setError} key={i} styles={styles} changes={{ changes, setChanges }} task={task} />)
-            }
+            <Suspense fallback={<p style={{ margin: "auto" }}>Cargando Tareas...</p>}>
+                {
+                    taskList.map((task, i) =>
+                        <Task setError={setError} key={i} styles={styles} changes={{ changes, setChanges }} task={task} />)
+                }
+            </Suspense>
 
         </div>
 

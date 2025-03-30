@@ -15,7 +15,7 @@ export const metadata = {
     images: '/favicon.ico',
   }
 }
-
+export const fetchCache = 'default-cache'
 export const viewport = { themeColor: '#17429f' }
 
 

@@ -98,13 +98,6 @@
     height: 2.3rem;
 }
 
-.note_footer> {
-    cursor: pointer;
-    color: inherit;
-}
-
-
-
 .new_note div input:hover,
 .new_note div input:focus {
     background-color: var(--background-dark);

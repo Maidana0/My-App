@@ -19,7 +19,8 @@ export async function POST(request) {
 
 export async function GET(request) {
     try {
-        const logged = cookies().get("logged")?.value
+        const cookieStore = await cookies()
+        const logged = cookieStore.get("logged")?.value
         if (!logged) return NextResponse.json(({ success: false, message: "El usuario NO se encuentra conectado!" }))
         return NextResponse.json(({ success: true, message: "El usuario se encuentra conectado!" }))
     } catch (error) {

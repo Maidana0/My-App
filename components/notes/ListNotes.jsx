@@ -1,11 +1,11 @@
 "use client"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
-import OneNote from "./OneNote"
 import fetchData from "@/utils/fetch"
 import dynamic from "next/dynamic"
 
 const NewNote = dynamic(() => import("./NewNote"), { ssr: false })
+const OneNote = dynamic(() => import("./OneNote"), { ssr: false })
 const Error = dynamic(() => import("@/components/Error"), { ssr: false })
 
 const ListNotes = ({ styles }) => {

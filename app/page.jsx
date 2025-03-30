@@ -6,6 +6,7 @@ import { amatic, roboto } from '@/lib/fonts'
 // const Title = dynamic(() => import("@/components/Title"))
 
 const filter = { filter: "drop-shadow(0 0 10px var(--primary-color))" }
+export const dynamic = 'force-static'
 
 export const metadata = {
   title: 'My Personal Web App',

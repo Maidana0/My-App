@@ -7,10 +7,11 @@ export const metadata = {
   description: "Ingresa sesión con tu correo electronico y contraseña asignada en el registro!"
 }
 
-const Login = dynamic(() => import("@/components/account/Login"), { ssr: false })
-const Register = dynamic(() => import("@/components/account/Register"), { ssr: false })
+const Login = dynamic(() => import("@/components/account/Login"))
+const Register = dynamic(() => import("@/components/account/Register"),)
 
-export default function Auth({searchParams }) {
+export default async function Auth(props) {
+  const searchParams = await props.searchParams;
   const fail = searchParams?.failValidation || false
 
   return (
@@ -20,7 +21,7 @@ export default function Auth({searchParams }) {
           src={'/images/icon.webp'} alt='Luffy Icon'
           width={100} height={100} />
         <h1>My Personal Web App</h1>
-        {fail ? <span style={{maxWidth:"300px", fontSize:"1.3em", marginTop:"1rem"}}>{fail}</span> : ""}
+        {fail ? <span style={{ maxWidth: "300px", fontSize: "1.3em", marginTop: "1rem" }}>{fail}</span> : ""}
       </div>
 
 
