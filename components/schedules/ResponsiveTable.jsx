@@ -3,6 +3,7 @@ import { useState } from "react";
 import data from "./data";
 import { today } from "../../utils/utils";
 import styles from "@/styles/Schedules.module.css"
+import { amatic } from "@/lib/fonts";
 
 const ResponsiveTable = ({ days, hours }) => {
     const [scheduleUser, setScheduleUser] = useState(data);
@@ -14,7 +15,7 @@ const ResponsiveTable = ({ days, hours }) => {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>{dia}</th>
+                            <th className={amatic.className}>{dia}</th>
                         </tr>
                     </thead>
 

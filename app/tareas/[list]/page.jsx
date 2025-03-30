@@ -47,10 +47,10 @@ export default async function Page({ params }) {
 
 
             <div className={`d-flex f-column-center ${styles.tasks_list_container}`}>
-                {/* <List
+                <List
                     list={list}
                     styles={styles}
-                /> */}
+                />
             </div>
         </>
     )
