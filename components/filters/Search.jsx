@@ -5,10 +5,11 @@ import { useState } from "react"
 
 
 const Search = ({ from, query }) => {
-    const useParams = useSearchParams()
-    const queryParam = useParams.get(query)
-    const categoryParam = useParams.get("category")
-    const [value, setValue] = useState(queryParam)
+    const searchParams = useSearchParams()
+    const currentValue = searchParams.toString()
+    const currentQueryValue = searchParams.get(query)
+
+    const [value, setValue] = useState(currentQueryValue)
 
     const router = useRouter()
 
@@ -17,13 +18,16 @@ const Search = ({ from, query }) => {
             className={`d-flex ${styles.form}`}
             onSubmit={(e) => {
                 e.preventDefault()
-                if (value && value.trim().length >= 1) {
-                    if (useParams.has("category")) {
-                        router.push(`?category=${categoryParam}&${query}=${value.trim()}`)
-                        return
-                    }
-                    router.push(`?${query}=${value.trim()}`)
+                if (value.trim().length < 1) { return }
+                if (searchParams.has(query)) {
+                    router.push(`?${currentValue.replace(currentQueryValue, value.trim())}`)
+                    return
+                } else if (searchParams.size > 0) {
+                    router.push(`?${currentValue}&${query}=${value.trim()}`)
+                    return
                 }
+
+                router.push(`?${query}=${value.trim()}`)
             }}
         >
             <input
@@ -34,22 +38,18 @@ const Search = ({ from, query }) => {
                 value={value ? value : ''}
                 onChange={(e) => setValue(e.target.value)}
                 minLength={1}
-                disabled={queryParam}
+                disabled={currentQueryValue}
             />
 
             <input
-                type={queryParam ? "button" : "submit"}
-                value={queryParam ? "Borrar ✖" : "Buscar"}
-                className={`${styles.input} ${queryParam ? styles.delete : ''}`}
+                type={currentQueryValue ? "button" : "submit"}
+                value={currentQueryValue ? "✖" : "Buscar"}
+                className={`${styles.input} ${currentQueryValue ? styles.delete : ''}`}
                 onClick={(e) => {
-                    if (queryParam) {
+                    if (currentQueryValue) {
                         e.preventDefault()
                         setValue('')
-                        if (useParams.has("category")) {
-                            router.push(`?category=${categoryParam}`)
-                            return
-                        }
-                        router.push(`?`)
+                        router.push(`?${currentValue.replace(`${query}=${currentQueryValue}`, '')}`)
                     }
                 }}
             />

@@ -38,12 +38,36 @@ const Components = ({ styles }) => {
         < div ref={navContain} className={`d-flex ${styles.navbar}`} >
 
             <ul className={`d-flex ${styles.nav_items}`}>
-                {urls.map((url, i) => (
-                    <li key={i} className={`${styles.nav_links} ${isActive(url.path) && styles.active}`} >
-                        <Link href={url.path} onClick={setOpen}>{url.name} </Link>
-                    </li>
-                ))}
-                <li className={styles.nav_links} style={{margin:"auto auto 1rem"}} >
+                {urls.map((url, i) => {
+                    if (url.subItems) {
+                        return (
+                            <div key={i} className={styles.sub_items_contain}>
+                                <div className={styles.divider}> </div>
+                                <li className={`${styles.title_sub_items} ${pathName.includes(url.name) && styles.active}`} >
+                                    {url.name}
+                                </li>
+                                <ul>
+                                    {url.subItems.map((subItem, i) => {
+                                        return (
+                                            <li key={`${url.name}-${i}`} className={`${styles.nav_links} ${isActive(subItem.path) && styles.active}`}>
+                                                <Link href={subItem.path} onClick={setOpen}>{subItem.name} </Link>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                                <div className={styles.divider}> </div>
+                            </div>
+                        )
+                    } else {
+                        return (
+                            <li key={i} className={`${styles.nav_links} ${isActive(url.path) && styles.active}`} >
+                                <Link href={url.path} onClick={setOpen}>{url.name} </Link>
+                            </li>
+                        )
+
+                    }
+                })}
+                <li className={`${styles.nav_links} ${styles.logout_link}`} style={{ margin: "2rem auto 1rem" }} >
                     <Link onClick={() => {
                         setOpen()
                         logout()

@@ -1,19 +1,18 @@
 .form {
-    width: 85%;
-    margin: 0 auto;
-    height: 3.5rem;
+    width: 60%;
+    height: 3rem;
     font-family: '__Roboto_Mono_c41b7d', '__Roboto_Mono_Fallback_c41b7d';
 }
 
 .form input {
     color: #fff;
-    font-size: 1.5rem;
     height: 100%;
     font-weight: 500;
 }
 
 .inputText {
-    width: calc(100% - 120px);
+    font-size: 1.3rem;
+    width: calc(100% - 85px);
     padding: 0 1rem;
     background-color: var(--neutral-mutted-color);
     border-radius: 8px 0 0 8px;
@@ -27,11 +26,12 @@
 
 
 .input {
-    width: 120px;
+    width: 85px;
     cursor: pointer;
     border-radius: 0 8px 8px 0;
     background-color: var(--background-color);
     transition: all ease .3s;
+    font-size: 1.2rem;
 }
 
 .delete {
@@ -42,6 +42,7 @@
 @media (max-width: 480px) {
     .form {
         width: 96%;
+        margin: auto;
     }
 }
 

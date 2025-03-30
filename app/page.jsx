@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { amatic } from '@/lib/fonts'
+import { amatic, roboto } from '@/lib/fonts'
 // import styles from '@/styles/Home.module.css'
 // import dynamic from "next/dynamic"
 
@@ -70,11 +70,14 @@ export default function Home() {
 
 
 
-      <div className="d-flex f-column-center" style={{ textAlign: "center" }}>
-        <small style={{ padding: ".5rem", fontSize: "small", color: "GrayText" }}>* Sitio en construcción *</small>
+      <div className={`d-flex f-column-center ${roboto.className}`} style={{ textAlign: "center" }}>
+        <p>
+          <small style={{ padding: ".5rem", fontSize: "small", color: "GrayText" }}>* Sitio en construcción *</small>
+        </p>
 
-
-        <small style={{ padding: ".5rem", fontSize: "small", color: "GrayText" }}>Tu información estará protegida por nuestro servidor.</small>
+        <p>
+          <small style={{ padding: ".5rem", fontSize: "small", color: "GrayText" }}>Tu información estará protegida por nuestro servidor.</small>
+        </p>
       </div>
 
     </div>

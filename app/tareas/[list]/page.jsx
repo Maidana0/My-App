@@ -33,7 +33,10 @@ export default async function Page({ params }) {
     return (
         <>
             <Title linkTitle={{ name: "Mis Tareas Pendientes", path: "/tareas/pendientes" }} linkContent={paths} />
-            <div className="d-flex">
+            <div
+                className="d-flex flex-wrap justify-content-evenly"
+                style={{ gap: "1rem" }}
+            >
                 <Search from={"tarea"} query={"task"} />
 
                 <SortBy

@@ -20,41 +20,34 @@ export default function SortBy({ name, defaultOption, staticOptions }) {
     const currentValue = searchParams.get(name)
 
     const handleChange = (e) => {
-        let value = e.target.value
+        const currentParams = searchParams.toString()
+
+        const value = e.target.value
         if (value == currentValue) return;
-        value = `?${name}=${value}`
 
-        if (searchParams.size == 0 || searchParams.size == 1 && searchParams.has(name))
-            return router.push(value)
-
-        if (!searchParams.has(name))
-            return router.push(value + "&" + searchParams.toString())
-        
-        // HAY ALGO QUE NO FUNCIONA AL INTENTAR PONER DOS O MÁS PARAMETROS, 
-        // EJ EN LA BUSQUEDA SE BORRA EL TASK Y SOLO QUEDA EL =BUSCADA
-
-        // Si ya existe el parametro, cambiar su valor manteniendo los demas intactos
-
-        let prevParams = searchParams.toString().split("=") // Separar los parametros
-        let indexOfCurrentParam = prevParams.findIndex(
-            (param) => param.includes(name) // Encontrar el indice del parametro actual
-        )
-        prevParams[indexOfCurrentParam + 1] = value.split("=")[1] // Cambiar su valor
-        prevParams = prevParams.join("=") // Unir los parametros nuevamente
-        router.push("?" + prevParams)
+        if (searchParams.has(name)) {
+            router.push(`?${currentParams.replace(currentValue, value)}`)
+            return
+        } else if (searchParams.size > 0) {
+            router.push(`?${currentValue}&${name}=${value}`)
+            return
+        }
+        router.push(`?${name}=${value}`)
     }
 
     return (
-        <select name={name} className={styles.custom_select} id={name} value={currentValue ?? "0"} onChange={handleChange}>
-            <option value="0" disabled>{defaultOption}</option>
-            {options.length > 0
-                ?
-                options.map((option, i) => (
-                    <option key={i} value={option.value ?? option}>{option.label ?? option}</option>
-                ))
-                :
-                <option value="" disabled>Cargando...</option>
-            }
-        </select>
+        <div className={styles.container}>
+            <select name={name} className={styles.custom_select} id={name} value={currentValue ?? "0"} onChange={handleChange}>
+                <option value="0" disabled>{defaultOption}</option>
+                {options.length > 0
+                    ?
+                    options.map((option, i) => (
+                        <option key={i} value={option.value ?? option}>{option.label ?? option}</option>
+                    ))
+                    :
+                    <option value="" disabled>Cargando...</option>
+                }
+            </select>
+        </div>
     )
 }

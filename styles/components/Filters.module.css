@@ -1,11 +1,11 @@
 .custom_select {
-    font-size: 1.4em;
+    font-size: 1.2em;
     outline: none;
     border: solid 1px var(--neutral-mutted-color);
     border-radius: 8px;
-    min-width: 200px;
-    height: 3.5rem;
-    padding: .7rem 1rem;
+    min-width: 170px;
+    height: 3rem;
+    padding-left: 1rem;
     color: #dddddd;
     cursor: pointer;
     transition: all ease .3s;
@@ -35,4 +35,14 @@
     color: var(--secondary-color);
     border-color: var(--secondary-color);
     background-image: url('/images/double_arrow_down_color.svg');
+}
+
+
+@media (max-width: 480px) {
+    .container {
+        width: 96%;
+        display: flex;
+        margin: auto;
+        justify-content: flex-end;
+    }
 }

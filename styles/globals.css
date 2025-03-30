@@ -8,6 +8,7 @@
 :root {
     --primary-color: #00A9FF;
     --secondary-color: #207ad8;
+    --secondary-color-rgb: 32, 122, 216;
 
 
     --background-dark: #141607;
@@ -15,6 +16,7 @@
 
 
     --background-color: #17429f;
+    --background-color-rgb: 23, 66, 159;
     --neutral-mutted-color: rgba(54, 53, 80, 0.4);
 }
 
@@ -111,7 +113,20 @@ footer svg:hover {
     display: flex;
     align-items: center;
 }
-.f-center{
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.justify-content-evenly {
+    justify-content: space-evenly;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.f-center {
     justify-content: center;
     text-align: center;
     align-content: center;

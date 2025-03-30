@@ -25,7 +25,10 @@ export default function Notas() {
         <>
             <Title title={"Mis Notas"} linkContent={aditional} />
 
-            <div className={`d-flex`}>
+            <div
+                className="d-flex flex-wrap justify-content-between"
+                style={{ width: "95%", margin: "auto", gap: "1rem" }}
+            >
                 <Search from={"nota"} query={"text"} />
                 <SortBy
                     name={"sort"}
