@@ -4,7 +4,6 @@
     margin: 1rem auto;
     width: 95%;
     height: 70px;
-    font-family: '__Amatic_SC_c41a4c', '__Amatic_SC_Fallback_c41a4c';
     text-wrap: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -24,7 +23,7 @@
 
 .title_contain a {
     padding: 0 5px;
-    transition: all .25s ease-in-out;
+    transition: color .3s ease;
     gap:8px;
 }
 

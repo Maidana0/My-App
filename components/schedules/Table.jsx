@@ -3,6 +3,7 @@ import { useState } from "react";
 import data from "./data";
 import styles from "@/styles/Schedules.module.css"
 import { today } from "../../utils/utils";
+import { amatic } from "@/lib/fonts";
 
 const Table = ({ days, hours }) => {
     // Estado para almacenar información adicional para un día específico
@@ -15,7 +16,7 @@ const Table = ({ days, hours }) => {
                     <tr>
                         <th></th>
                         {days.map((dayWeek, i) => (
-                            <th key={i}>{dayWeek}</th>
+                            <th key={i} className={amatic.className}>{dayWeek}</th>
                         ))}
                     </tr>
                 </thead>

@@ -1,0 +1,48 @@
+.custom_select {
+    font-size: 1.2em;
+    outline: none;
+    border: solid 1px var(--neutral-mutted-color);
+    border-radius: 8px;
+    min-width: 170px;
+    height: 3rem;
+    padding-left: 1rem;
+    color: #dddddd;
+    cursor: pointer;
+    transition: all ease .3s;
+    text-transform: capitalize;
+
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('/images/double_arrow_down.svg');
+    background-position: 95% center;
+    background-repeat: no-repeat;
+}
+
+
+.custom_select option {
+    background-color: var(--background-dark);
+    color: #fff;
+}
+
+.custom_select option:disabled {
+    color: #999;
+}
+
+.custom_select:hover,
+.custom_select:focus {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    background-image: url('/images/double_arrow_down_color.svg');
+}
+
+
+@media (max-width: 480px) {
+    .container {
+        width: 96%;
+        display: flex;
+        margin: auto;
+        justify-content: flex-end;
+    }
+}

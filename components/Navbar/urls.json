@@ -17,7 +17,19 @@
     },
     {
         "name": "tareas",
-        "path": "/tareas/pendientes"
+        "subItems": [
+            {
+                "name": "pendientes",
+                "path": "/tareas/pendientes"
+            },
+            {
+                "name": "en progreso",
+                "path": "/tareas/en-progreso"
+            },
+            {
+                "name": "realizadas",
+                "path": "/tareas/realizadas"
+            }
+        ]
     }
-    
 ]

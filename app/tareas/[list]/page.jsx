@@ -1,7 +1,7 @@
 import styles from "@/styles/Tasks.module.css"
 import dynamic from "next/dynamic"
-import { MdOutlineDone, MdOutlineDoneAll } from "react-icons/md";
-import { GiMuscleFat, GiMuscleUp  } from "react-icons/gi";
+import { MdOutlineDoneAll } from "react-icons/md";
+import { GiMuscleFat } from "react-icons/gi";
 
 export const metadata = {
     title: "Tareas",
@@ -11,7 +11,8 @@ export const metadata = {
 const NotFound = dynamic(() => import("@/app/not-found"), { ssr: false })
 
 const Title = dynamic(() => import("@/components/Title"))
-const Search = dynamic(() => import("@/components/Search"), { ssr: false })
+const Search = dynamic(() => import("@/components/filters/Search"), { ssr: false })
+const SortBy = dynamic(() => import("@/components/filters/SortBy"), { ssr: false })
 
 const List = dynamic(() => import("@/components/tasks/List"), {
     loading: () => <p style={{ margin: "auto" }}>Cargando Tareas...</p>,
@@ -24,7 +25,7 @@ const paths = [
 ]
 
 
-export default function Page({ params }) {
+export default async function Page({ params }) {
     const { list } = params
     const correctParams = list == "pendientes" || paths.some(({ path }) => path.split("/").pop() == list);
     if (!correctParams) { return <NotFound message={"En tareas, no existe la siguiente sección: /" + list} /> }
@@ -32,7 +33,18 @@ export default function Page({ params }) {
     return (
         <>
             <Title linkTitle={{ name: "Mis Tareas Pendientes", path: "/tareas/pendientes" }} linkContent={paths} />
-            <Search from={"tarea"} query={"task"} />
+            <div
+                className="d-flex flex-wrap justify-content-evenly"
+                style={{ gap: "1rem" }}
+            >
+                <Search from={"tarea"} query={"task"} />
+
+                <SortBy
+                    defaultOption={"Categorias"}
+                    name={"category"}
+                />
+            </div>
+
 
             <div className={`d-flex f-column-center ${styles.tasks_list_container}`}>
                 <List

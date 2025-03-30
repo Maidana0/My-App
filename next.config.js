@@ -4,12 +4,12 @@
 const nextConfig = {
     // reactStrictMode:false,
     env: {
-        MY_API_URL: "https://my-personal-back.vercel.app",
-        MY_LOCAL_URL: "",
-        GOOGLE_API_KEY: "AIzaSyAfCyf5hHNbYKuy3BBqcJpEJj144JGVlrY",
-        TIME_ZONE: "America/Argentina/Buenos_Aires",
-        ENVIRONMENT: "production",
-        SECRET_KEY: "MyPersonalWebSite_Maidana_Franco"
+        MY_API_URL: process.env.NEXT_PUBLIC_MY_API_URL,
+        MY_LOCAL_URL: process.env.NEXT_PUBLIC_MY_LOCAL_URL,
+        GOOGLE_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
+        TIME_ZONE: process.env.NEXT_PUBLIC_TIME_ZONE,
+        ENVIRONMENT: process.env.NEXT_PUBLIC_ENVIRONMENT,
+        SECRET_KEY: process.env.NEXT_PUBLIC_SECRET_KEY,
 
     },
 }

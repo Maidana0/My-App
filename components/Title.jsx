@@ -1,4 +1,5 @@
 "use client"
+import { amatic } from "@/lib/fonts"
 import styles from "@/styles/components/Title.module.css"
 import Link from "next/link"
 import { usePathname } from 'next/navigation'
@@ -10,7 +11,7 @@ const Title = ({ title, linkTitle, linkContent }) => {
     const isActive = linkTitle && pathName.endsWith(linkTitle.path)
 
     return (
-        <div className={`d-flex ${styles.title_contain}`}>
+        <div className={`d-flex ${styles.title_contain} ${amatic.className}`}>
             {
                 linkTitle ?
                     <Link className={`${styles.title} ${isActive && styles.active}`}
