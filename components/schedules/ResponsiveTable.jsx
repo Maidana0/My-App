@@ -5,45 +5,48 @@ import styles from "@/styles/Schedules.module.css"
 import { amatic } from "@/lib/fonts";
 
 const ResponsiveTable = ({ days, hours }) => {
-    const [scheduleUser, setScheduleUser] = useState(data);
+  const [scheduleUser, setScheduleUser] = useState(data);
 
-    return (
-        <div className={styles.table_contain}>
-            {days.map((dia, indexD) => {
-                return (<table key={indexD} className={`${styles.table} ${styles.table_responsive}`}>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th className={amatic.className}>{dia}</th>
-                        </tr>
-                    </thead>
+  return (
+    <div className={styles.table_contain}>
+      {days.map((day, indexD) => {
+        return (<table key={indexD} className={`${styles.table} ${styles.table_responsive}`}>
+          <thead>
+            <tr className={amatic.className}>
+              <th>Hora</th>
+              <th >{day}</th>
+            </tr>
+          </thead>
 
-                    <tbody>
-                        {
-                            hours.map((hora, i) => (
-                                <tr className={styles.tr} key={i}>
-                                    <td className={styles.hour}>{hora}</td>
-                                    <td className={indexD == today ? styles.today_responsive : ''} >
-                                        <span className={styles.table_item_name}>
-                                            {scheduleUser[dia] && scheduleUser[dia][hora] ?
-                                                `${scheduleUser[dia][hora].name}` : ''}
-                                        </span>
-                                        <br />
-                                        <span className={styles.info}>
-                                            {scheduleUser[dia][hora] && scheduleUser[dia][hora].info
-                                                ? ` ${scheduleUser[dia][hora].info}` : ''}
-                                        </span>
-                                    </td>
-                                </tr>
-                            ))
-                        }
-                    </tbody>
-                </table>
+          <tbody>
+            {
+              hours.map((hour, i) => {
+
+                return (
+                  <tr className={styles.tr} key={i}>
+                    <td className={styles.hour}>{hour}</td>
+                    <td className={indexD == today ? styles.today : ''} >
+                      <span className={styles.table_item_name}>
+                        {scheduleUser[day] && scheduleUser[day][hour] ?
+                          `${scheduleUser[day][hour].name}` : ''}
+                      </span>
+                      <br />
+                      <span className={styles.info}>
+                        {scheduleUser[day][hour] && scheduleUser[day][hour].info
+                          ? ` ${scheduleUser[day][hour].info}` : ''}
+                      </span>
+                    </td>
+                  </tr>
                 )
-            })
+              })
             }
-        </div>
-    );
+          </tbody>
+        </table>
+        )
+      })
+      }
+    </div>
+  );
 };
 
 
