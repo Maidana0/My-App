@@ -9,8 +9,8 @@ const ResponsiveTable = ({ days, hours }) => {
 
   return (
     <div className={styles.table_contain}>
-      {days.map((day, indexD) => {
-        return (<table key={indexD} className={`${styles.table} ${styles.table_responsive}`}>
+      {days.map((day, indexD) => (
+        <table key={indexD} className={`${styles.table} ${styles.table_responsive}`}>
           <thead>
             <tr className={amatic.className}>
               <th>Hora</th>
@@ -21,20 +21,26 @@ const ResponsiveTable = ({ days, hours }) => {
           <tbody>
             {
               hours.map((hour, i) => {
+                const schedule = scheduleUser[day]?.[hour];
 
                 return (
-                  <tr className={styles.tr} key={i}>
+                  <tr key={i}>
                     <td className={styles.hour}>{hour}</td>
-                    <td className={indexD == today ? styles.today : ''} >
-                      <span className={styles.table_item_name}>
-                        {scheduleUser[day] && scheduleUser[day][hour] ?
-                          `${scheduleUser[day][hour].name}` : ''}
-                      </span>
-                      <br />
-                      <span className={styles.info}>
-                        {scheduleUser[day][hour] && scheduleUser[day][hour].info
-                          ? ` ${scheduleUser[day][hour].info}` : ''}
-                      </span>
+                    <td
+                      className={
+                        `${indexD === today && styles.today} ${schedule && styles.activity}`
+                      }
+                      style={{ color: schedule?.color ?? "" }}
+                    >
+                      {
+                        schedule && (<>
+                          {schedule.activity}
+                          <br />
+                          <span className={styles.info}>
+                            {schedule.info ?? ""}
+                          </span>
+                        </>)
+                      }
                     </td>
                   </tr>
                 )
@@ -42,20 +48,10 @@ const ResponsiveTable = ({ days, hours }) => {
             }
           </tbody>
         </table>
-        )
-      })
-      }
+      ))}
     </div>
   );
 };
 
 
-
-
-
 export default ResponsiveTable;
-
-
-
-
-

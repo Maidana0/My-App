@@ -40,7 +40,7 @@ const inputStyle = {
 }
 
 const StaticTable = ({ view, days, hours }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [password, setPassword] = useState("");
 
     const handleLogin = (e) => {
