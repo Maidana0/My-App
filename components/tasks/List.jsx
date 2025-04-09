@@ -34,15 +34,15 @@ const List = ({ list, styles }) => {
         getTasks()
     }, [task, category, changes])
 
-    useEffect(() => {
-        if (listContain.current) {
-            setTimeout(() => {
-                if (listContain.current) {
-                    listContain.current.scrollTop = listContain.current.scrollHeight ?? 0;
-                }
-            }, 800)
-        }
-    }, [taskList])
+    // useEffect(() => {
+    //     if (listContain.current) {
+    //         setTimeout(() => {
+    //             if (listContain.current) {
+    //                 listContain.current.scrollTop = listContain.current.scrollHeight ?? 0;
+    //             }
+    //         }, 800)
+    //     }
+    // }, [taskList])
 
     const statusStyle = list == "en-progreso" ? styles.in_progress : list == "realizadas" ? styles.done : styles.pending
 

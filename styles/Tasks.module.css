@@ -1,138 +1,138 @@
 .tasks_list_container {
-    justify-content: space-between;
-    margin: 2rem auto;
-    width: 80%;
-    min-height: 555px;
-    color: white;
-    background-color: var(--neutral-mutted-color);
-    padding: 10px 2px 2px;
-    border-radius: 8px;
+  justify-content: space-between;
+  margin: 2rem auto;
+  width: 80%;
+  min-height: 555px;
+  color: white;
+  background-color: var(--neutral-mutted-color);
+  padding: 10px 2px 2px;
+  border-radius: 8px;
 }
 
 .list_container {
-    flex-direction: column;
-    height:500px;
-    width: 100%;
-    overflow-y: auto;
-    gap: 11px;
+  flex-direction: column;
+  height: 500px;
+  width: 100%;
+  overflow-y: auto;
+  gap: 11px;
 }
 
 .task_container {
-    width: 98%;
-    padding: 8px 5px;
-    justify-content: space-between;
-    border-radius: 10px;
-    border-bottom: solid 2px rgba(255, 255, 255, 0.4);
+  width: 98%;
+  padding: 8px 5px;
+  justify-content: space-between;
+  border-radius: 10px;
+  border-bottom: solid 2px rgba(255, 255, 255, 0.4);
 }
 
 /* COLORES PARA TAREAS PENDIENTES */
 .pending textarea::-webkit-scrollbar-thumb,
 .pending::-webkit-scrollbar-thumb {
-    background: #3c00c7;
+  background: #3c00c7;
 }
 
 .pending .task_container {
-    background: #3c00c7;
+  background: #3c00c7;
 }
 
 .pending .task_container:hover {
-    background: #4c00ff;
+  background: #4c00ff;
 }
 
 /* COLORES PARA TAREAS EN PROGRESO */
 .in_progress textarea::-webkit-scrollbar-thumb,
 .in_progress::-webkit-scrollbar-thumb {
-    background: #ea580c;
+  background: #ea580c;
 }
 
 .in_progress .task_container {
-    background: #c2410c;
+  background: #c2410c;
 }
 
 .in_progress .task_container:hover {
-    background: #ea580c;
+  background: #ea580c;
 }
 
 /* COLORES Y ESTILOS PARA TAREAS REALIZADAS */
 .done::-webkit-scrollbar-thumb {
-    background: #0c4a6e;
+  background: #0c4a6e;
 }
 
 .done .task_container {
-    background: #0c4a6e;
+  background: #0c4a6e;
 }
 
 .done .task_container .task_text {
-    overflow: hidden;
-    text-align: start;
+  overflow: hidden;
 }
 
 .done .task_container .task_text p {
-    text-wrap: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .done .task_container:hover {
-    background: #0369a1;
+  background: #0369a1;
 }
 
 /*  */
 
 .task_container svg {
-    width: auto;
-    height: auto;
-    cursor: pointer;
-    padding: 6px;
-    font-size: 1.6em;
-    border-radius: 12px;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  padding: 6px;
+  font-size: 1.6em;
+  border-radius: 12px;
 }
 
 .task_container svg:hover {
-    background-color: var(--neutral-mutted-color);
+  background-color: var(--neutral-mutted-color);
 }
 
 .task_text {
-    height: auto;
-    width: 100%;
-    text-align: center;
+  height: auto;
+  padding-left: 5px;
+  width: 100%;
 }
 
 .task_text p {
-    font-size: 1.3em;
+  font-size: 1.3em;
 }
 
 .task_text textarea {
-    min-height: 100px;
-    padding: 1rem .5rem;
-    font-size: 1.7em;
-    text-align: center;
-    width: 100%;
+  padding-left: 40px;
+  font-size: 1.7em;
+  width: 100%;
+  text-wrap: wrap;
+  word-break: break-all;
 }
 
 .form {
-    width: 100%;
-    margin-top: 7px;
-    min-height: 60px;
+  width: 100%;
+  margin-top: 7px;
+  min-height: 60px;
 }
 
 .form button {
-    background-color: transparent;
-    cursor: pointer;
-    margin: auto 6px;
-    height: 100%;
-    padding: 0 4px;
+  background-color: transparent;
+  cursor: pointer;
+  margin: auto 6px;
+  height: 100%;
+  padding: 0 4px;
 }
 
 .form textarea {
-    width: 100%;
-    min-height: 55px;
-    color: #fff;
-    font-size: 1.6em;
-    padding: 6px 10px;
-    background-color: var(--background-dark);
-    border-radius: 10px;
-    align-content: center;
+  width: 100%;
+  min-height: 55px;
+  color: #fff;
+  font-size: 1.6em;
+  padding: 6px 10px;
+  background-color: var(--background-dark);
+  border-radius: 10px;
+  align-content: center;
 }
 
 
@@ -140,47 +140,66 @@
 /* Task Modal */
 
 .backdrop_modal {
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    top: 0;
-    left: 0;
-    background-color:#14160794;;
-    z-index: 5;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: #14160794;
+  ;
+  z-index: 5;
 }
 
 .modal_container {
-    margin: auto;
-    height: auto;
-    width: 330px;
-    padding-bottom: 15px;
-    border-radius: 12px;
-    background: linear-gradient(#0369a1 0%,#0c4a6e 100%);
+  margin: auto;
+  height: auto;
+  width: 500px;
+  max-width: 90%;
+  padding-bottom: 15px;
+  border-radius: 12px;
+  background: linear-gradient(#0369a1 0%, #0c4a6e 100%);
+
 }
 
-.modal_header{
-    justify-content: space-between;
-    background-color: black;
-    padding: 5px 15px;
-    border-radius: 12px 12px 0 0;
+.modal_header {
+  background-color: black;
+  padding: 5px 15px;
+  border-radius: 12px 12px 0 0;
 }
 
-.modal_container h4{
-    border-bottom: solid 1px #fff;
-    border-radius: 8px;
-    background-color: var(--neutral-mutted-color);
-    padding: 5px 10px;
-    margin: 8px 4px 2px
+.modal_body {
+  padding: 8px 10px 20px;
 }
 
-.modal_container p, .modal_container small{
-    line-height: 26px;
-    padding: 5px 16px;
-    margin: 1px auto 10px;
+.modal_container .title {
+  display: block;
+  width: 100%;
+  border-bottom: solid 1px #fff;
+  border-radius: 8px;
+  background-color: var(--neutral-mutted-color);
+  padding: 10px 15px;
+  margin: 12px 4px 4px
+}
+
+.modal_container h4 {
+  display: inline-block;
+  width: 105px;
+}
+
+.modal_container span {
+  padding: 0 3px;
+  line-height: 26px;
+  font-weight: normal;
+}
+
+.modal_body .content {
+  font-size: 17px;
+  padding: 12px 5px;
+  line-height: 26px;
 }
 
 @media (max-width: 480px) {
-    .tasks_list_container {
-        width: 95%;
-    }
+  .tasks_list_container {
+    width: 95%;
+  }
 }
