@@ -1,45 +1,29 @@
 const data = Object.freeze(
   {
     Lunes: {
-      '08:00 a 10:00': { activity: 'Inglés Téc. II', info: 'Virtual' },
-      '10:00 a 12:00': { activity: 'Inglés Téc. II', info: 'Virtual' },
-      '13:00': { activity: 'Natación', color: "#50bcff" },
-      '16:00 a 18:00': { activity: 'Inglés III', info: `Aula 229 - Semi` },
-      '19:00 a 21:00': { activity: 'Matematica Gen.', info: 'Virtual' },
-      '21:00 a 23:00': { activity: 'Matematica Gen.', info: 'Virtual' },
+      '08:00 a 10:00': { activity: 'Metodología de la Inv.', info: 'Presencial', color: "#c97200ff", textColor: "#fff" },
+      '10:00 a 12:00': { activity: 'Metodología de la Inv.', info: 'Presencial', color: "#c97200ff", textColor: "#fff" },
+      '19:00 a 21:00': { activity: 'Matematica Gen.', info: 'Virtual', color: "#532ef8ff", textColor: "#fff" },
+      '21:00 a 23:00': { activity: 'Matematica Gen.', info: 'Virtual', color: "#532ef8ff", textColor: "#fff" },
     },
     Martes: {
-      '08:00 a 10:00': { activity: 'Natación 8hs', color: "#50bcff" },
-      '12:00': { activity: 'Natación', color: "#50bcff" },
-      '14:00': { activity: 'Medicina Deport.', info: 'Aula 213' },
-      '15:00': { activity: 'Medicina Deport.', info: 'Aula 213' },
-      '16:00 a 18:00': { activity: 'Medicina Deport.', info: 'Aula 213' },
-      '19:00 a 21:00': { activity: 'Prog. Básica II', info: "Lab98 - Semi." },
-      '21:00 a 23:00': { activity: 'Prog. Básica II', info: "Lab98 - Semi." }
+      '08:00 a 10:00': { activity: 'Visualización e Interfaces', color: "#532ef8c0", textColor: "#fff" }
     },
     Miér: {
-      '13:00': { activity: 'Natación', color: "#50bcff" },
     },
     Jueves: {
-      '08:00 a 10:00': { activity: 'Diseño Gráfico', info: 'Aula 253' },
-      '10:00 a 12:00': { activity: 'Diseño Gráfico', info: 'Aula 253' },
-      '13:00': { activity: 'Estadística', info: "Virtual" },
-      '14:00': { activity: 'Estadística', info: "Virtual" },
-      '15:00': { activity: 'Natación', color: "#50bcff" },
-      '19:00 a 21:00': { activity: 'Psico. Evolutiva II', info: "Virtual" },
+      '13:00': { activity: 'Estadística', info: "Virtual", color: "#007bffff", textColor: "#fff" },
+      '14:00': { activity: 'Estadística', info: "Virtual", color: "#007bffff", textColor: "#fff" },
     },
     Viernes: {
-      '08:00 a 10:00': { activity: 'Natación', color: "#50bcff" },
-      '14:00': { activity: 'Historia Arg.', info: 'Aula 124 - Semi.' },
-      '15:00': { activity: 'Historia Arg.', info: 'Aula 124 - Semi.' },
-      '16:00 a 18:00': { activity: 'Historia Arg.', info: 'Aula 124 - Semi.' },
+      '08:00 a 10:00': { activity: 'Metodología de la Inv.', info: 'Virtual', color: "#c97200ff", textColor: "#fff" },
+      '10:00 a 12:00': { activity: 'Metodología de la Inv.', info: 'Virtual', color: "#c97200ff", textColor: "#fff" },
     },
     Sábado: {
-      '08:00 a 10:00': { activity: 'Legislación', info: 'Aula 220' },
-      '12:00': { activity: 'Tutorías Ing.', info: 'Virtual' },
-      '13:00': { activity: 'Tutorías Ing.', info: 'Virtual' },
-      '14:00': { activity: 'Matematica Gen.', info: 'Virtual' },
-      '15:00': { activity: 'Matematica Gen.', info: 'Virtual' },
+      '10:00 a 12:00': { activity: 'Inglés IV', info: `Aula 231 - Semi`, color: "#007bffff", textColor: "#fff" },
+      '13:00': { activity: 'Tutorías Ing.', info: '(14a16hs)' },
+      '14:00': { activity: 'Matematica Gen.', info: 'Virtual', color: "#532ef8ff", textColor: "#fff" },
+      '15:00': { activity: 'Matematica Gen.', info: 'Virtual', color: "#532ef8ff", textColor: "#fff" },
       '16:00 a 18:00': { activity: 'Matematica Gen.', info: 'Virtual' },
     }
   }

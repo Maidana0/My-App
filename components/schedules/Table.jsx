@@ -68,7 +68,7 @@ const Table = ({ days, hours }) => {
                             className={
                               `${indexDay === today && styles.today} ${schedule && styles.activity}`
                             }
-                            style={{ color: schedule?.color ?? "" }}
+                            style={{ color: schedule?.textColor ?? "", backgroundColor: schedule?.color ?? "" }}
                           >
                             {
                               schedule && (<>

@@ -9,65 +9,65 @@ const Form = dynamic(() => import("./Form"), { ssr: false })
 const Error = dynamic(() => import("@/components/Error"), { ssr: false })
 
 const List = ({ list, styles }) => {
-    const listContain = useRef()
-    const searchParams = useSearchParams();
-    const task = searchParams.get("task");
-    const category = searchParams.get("category") == "todas" ? "" : searchParams.get("category");
-    const [error, setError] = useState({ error: false, message: "", status: 404 })
-    const [taskList, setTaskList] = useState([])
-    const [changes, setChanges] = useState(false)
+  const listContain = useRef()
+  const searchParams = useSearchParams();
+  const task = searchParams.get("task");
+  const category = searchParams.get("category") == "todas" ? "" : searchParams.get("category");
+  const [error, setError] = useState({ error: false, message: "", status: 404 })
+  const [taskList, setTaskList] = useState([])
+  const [changes, setChanges] = useState(false)
 
-    useEffect(() => {
-        async function getTasks() {
-            const status = list == "pendientes" ? "pending" : list == "en-progreso" ? "in-progress" : "done"
+  useEffect(() => {
+    async function getTasks() {
+      const status = list == "pendientes" ? "pending" : list == "en-progreso" ? "in-progress" : "done"
 
-            const queryParams = `?status=${status}&task=${task ?? ""}&category=${category ?? ""}`
-            const path = "tasks" + queryParams
+      const queryParams = `?status=${status}&task=${task ?? ""}&category=${category ?? ""}`
+      const path = "tasks" + queryParams
 
-            const data = await fetchData(path, { isLocalReq: true })
-            if (data.message == "Unauthorized" | data.fail | data.error | data.success == false) {
-                setError({ error: true, message: data.message, status: data.statusCode ? data.statusCode : 404 })
-                return
-            }
-            setTaskList(data)
+      const data = await fetchData(path, { isLocalReq: true })
+      if (data.message == "Unauthorized" | data.fail | data.error | data.success == false) {
+        setError({ error: true, message: data.message, status: data.statusCode ? data.statusCode : 404 })
+        return
+      }
+      setTaskList(data)
+    }
+    getTasks()
+  }, [task, category, changes])
+
+  useEffect(() => {
+    if (listContain.current) {
+      setTimeout(() => {
+        if (listContain.current) {
+          listContain.current.scrollTop = listContain.current.scrollHeight ?? 0;
         }
-        getTasks()
-    }, [task, category, changes])
+      }, 800)
+    }
+  }, [taskList])
 
-    // useEffect(() => {
-    //     if (listContain.current) {
-    //         setTimeout(() => {
-    //             if (listContain.current) {
-    //                 listContain.current.scrollTop = listContain.current.scrollHeight ?? 0;
-    //             }
-    //         }, 800)
-    //     }
-    // }, [taskList])
+  const statusStyle = list == "en-progreso" ? styles.in_progress : list == "realizadas" ? styles.done : styles.pending
 
-    const statusStyle = list == "en-progreso" ? styles.in_progress : list == "realizadas" ? styles.done : styles.pending
-
-    if (error.error) return <Error message={error.message} status={error.status} height={"100%"} />
+  if (error.error) return <Error message={error.message} status={error.status} height={"100%"} />
 
 
-    return (<>
+  return (<>
 
-        <div ref={listContain} className={`d-flex  ${styles.list_container} ${statusStyle}`}>
-            <Suspense fallback={<p style={{ margin: "auto" }}>Cargando Tareas...</p>}>
-                {
-                    taskList.map((task, i) =>
-                        <Task setError={setError} key={i} styles={styles} changes={{ changes, setChanges }} task={task} />)
-                }
-            </Suspense>
-
-        </div>
-
+    <div ref={listContain} className={`d-flex  ${styles.list_container} ${statusStyle}`}>
+      <Suspense fallback={<p style={{ margin: "auto" }}>Cargando Tareas...</p>}>
         {
-            list == "pendientes"
-                ? <Form styles={styles} setList={() => setChanges(!changes)} setError={setError} />
-                : ""
+          taskList.map((task, i) =>
+            <Task setError={setError} key={i} styles={styles} changes={{ changes, setChanges }} task={task} />)
         }
+      </Suspense>
 
-    </>)
+    </div>
+
+    {
+      list == "pendientes"
+        ? <Form styles={styles} setList={() => setChanges(!changes)} setError={setError} />
+        : ""
+    }
+
+  </>)
 }
 
 export default List

@@ -30,7 +30,7 @@ const ResponsiveTable = ({ days, hours }) => {
                       className={
                         `${indexD === today && styles.today} ${schedule && styles.activity}`
                       }
-                      style={{ color: schedule?.color ?? "" }}
+                      style={{ background: schedule?.color ?? "", color: schedule?.textColor ?? "" }}
                     >
                       {
                         schedule && (<>
