@@ -1,48 +1,98 @@
 import fetchData from "@/utils/fetch";
-import { useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { UseContext } from "../context/Context"
 import PasswordInput from "./PasswordInput";
+import { useRouter } from "next/navigation";
+import Spinner from "../shared/Spinner";
 
 
-const LoginForm = ({ router, styles }) => {
-    const [errorField, setErrorField] = useState([])
-    const { login, handleMessage } = UseContext()
+const LoginForm = ({ styles }) => {
+  const [errorField, setErrorField] = useState([])
+  const [fields, setFields] = useState({ email: "", password: "" })
+  const [isPending, startTransition] = useTransition()
+  const { login, handleMessage } = UseContext()
+  const router = useRouter()
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        const data = await fetchData("account",
-            {
-                isLocalReq: true, method: "POST",
-                body: { email: e.target.email.value, password: e.target.password.value }
-            })
+  const validateFields = () => {
+    let errors = []
 
-        if (data.token) {
-            login()
-            router.push("/")
-            return
-        }
-        if (data.error == "Bad Request") {
-            setErrorField(data.message)
-            return
-        } else if (data.error == "Unauthorized") {
-            setErrorField([data.message])
-            return
-        }
-
-        handleMessage({ success: false, message: "Ocurrio un error, intentelo mas tarde." })
+    if (!fields.email.trim()) {
+      errors.push("El correo electrónico es obligatorio.")
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.trim())) {
+      errors.push("El correo electrónico no es válido.")
     }
-    return (
-        <form onSubmit={handleSubmit} >
-            <input type="email" name="email" placeholder="Correo electrónico" autoComplete="off" />
 
-            <PasswordInput styles={styles} />
+    if (!fields.password) {
+      errors.push("La contraseña es obligatoria.")
+    }
 
-            {errorField.map((msg, i) => <span key={i}>- {msg}</span>)}
+    setErrorField(errors)
+    return errors.length === 0;
+  }
 
-            <input className={styles.btn_signIn} type="submit" value={"Iniciar Sesión"} />
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (!validateFields()) return;
 
-        </form >
-    )
+    startTransition(async () => {
+      const data = await fetchData("account",
+        {
+          isLocalReq: true, method: "POST",
+          body: fields
+        })
+
+      if (data.token) {
+        login()
+        router.push("/")
+        return
+      }
+      if (data.error == "Bad Request") {
+        setErrorField(data.message)
+        return
+      } else if (data.error == "Unauthorized") {
+        setErrorField([data.message])
+        return
+      }
+
+      handleMessage({ success: false, message: "Ocurrio un error, intentelo mas tarde." })
+    })
+  }
+
+  useEffect(() => {
+    setErrorField([])
+  }, [])
+
+  const handleOnChange = (e) => {
+    setFields({ ...fields, [e.target.name]: e.target.value })
+    if (errorField.length > 0) {
+      setErrorField([])
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit} >
+      <input type="text" name="email" placeholder="Correo electrónico" autoComplete="off" value={fields.email} onChange={handleOnChange} />
+
+      <PasswordInput styles={styles} value={fields.password} onChange={handleOnChange} />
+
+      <ul className="error-fields">
+        {errorField.map((msg, i) => <li key={i}>{msg}</li>)}
+      </ul>
+
+      <button
+        className={`${styles.btn_signIn} d-flex f-center`}
+        style={{ gap: "8px" }}
+        type="submit"
+        disabled={isPending}
+      >
+        {isPending ? <>
+          <Spinner />
+          Iniciando...
+        </> : "Iniciar sesión"}
+      </button>
+
+    </form >
+  )
 }
 
 export default LoginForm

@@ -1,191 +1,246 @@
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    scroll-behavior: smooth;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
 }
 
 :root {
-    --primary-color: #00A9FF;
-    --secondary-color: #207ad8;
-    --secondary-color-rgb: 32, 122, 216;
+  --primary-color: #00A9FF;
+  --secondary-color: #207ad8;
+  --secondary-color-rgb: 32, 122, 216;
 
 
-    --background-dark: #141607;
+  --background-dark: #141607;
 
 
 
-    --background-color: #17429f;
-    --background-color-rgb: 23, 66, 159;
-    --neutral-mutted-color: rgba(54, 53, 80, 0.4);
+  --background-color: #17429f;
+  --background-color-rgb: 23, 66, 159;
+  --neutral-mutted-color: rgba(54, 53, 80, 0.4);
 }
 
 html,
 body {
-    max-width: 100vw;
-    min-height: 100vh;
+  max-width: 100vw;
+  min-height: 100vh;
 
 }
 
 main {
-    background-image: url('/images/luffy.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 60vh;
+  background-image: url('/images/luffy.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 60vh;
 }
 
 body {
-    background: radial-gradient(circle, var(--background-color) 0%, rgba(0, 0, 0, 1) 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  background: radial-gradient(circle, var(--background-color) 0%, rgba(0, 0, 0, 1) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 button {
-    border-style: none;
+  border-style: none;
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 nav li {
-    list-style: none;
+  list-style: none;
 }
 
 textarea {
-    resize: none;
-    border: none;
-    outline-style: none;
-    color: inherit;
+  resize: none;
+  border: none;
+  outline-style: none;
+  color: inherit;
 
-    width: 100%;
-    background-color: transparent;
-    overflow-y: auto;
-    field-sizing: content;
+  width: 100%;
+  background-color: transparent;
+  overflow-y: auto;
+  field-sizing: content;
 }
 
 input {
-    outline-style: none;
-    border: none;
+  outline-style: none;
+  border: none;
 }
 
 footer {
-    margin-top: auto;
-    height: 110px;
-    font-size: 1.2em;
-    gap: .3rem;
+  margin-top: auto;
+  height: 110px;
+  font-size: 1.2em;
+  gap: .3rem;
 }
 
 footer span a:hover {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 footer div {
-    gap: .5rem;
+  gap: .5rem;
 }
 
 footer svg {
-    filter: grayscale(75%);
-    transition: filter, transform 0.3s ease;
+  filter: grayscale(75%);
+  transition: filter, transform 0.3s ease;
 }
 
 footer svg:hover {
-    filter: grayscale(0%);
-    transform: scale(1.1);
+  filter: grayscale(0%);
+  transform: scale(1.1);
 }
 
 
 
 
 .bg-d {
-    color: white;
-    background-color: var(--background-dark);
+  color: white;
+  background-color: var(--background-dark);
 }
 
 .bg-w {
-    color: black;
-    background-color: cornsilk;
+  color: black;
+  background-color: cornsilk;
 }
 
 .d-flex {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .justify-content-between {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .justify-content-evenly {
-    justify-content: space-evenly;
+  justify-content: space-evenly;
 }
 
 .flex-wrap {
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .f-center {
-    justify-content: center;
-    text-align: center;
-    align-content: center;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
 }
 
 .f-column-center {
-    flex-direction: column;
-    justify-content: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .btn {
-    padding: 1rem;
-    border-radius: 20px;
-    font-weight: 500;
-    font-size: 1.1rem;
-    width: 100px;
+  padding: 1rem;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  width: 100px;
 }
 
 .icon-bg-b {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
 }
 
 .icon-bg-b:hover {
-    background-color: black;
+  background-color: black;
 }
 
 .icon-bg-w {
-    background-color: rgba(255, 255, 255, 0.5);
-    color: black;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: black;
 }
 
 .icon-bg-w:hover {
-    background-color: white;
+  background-color: white;
 }
 
 .btn-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70px;
-    height: 70px;
-    border-radius: 100%;
-    font-size: 2.5em;
-    border: solid 2px;
-    cursor: pointer;
-    transition: all .5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 100%;
+  font-size: 2.5em;
+  border: solid 2px;
+  cursor: pointer;
+  transition: all .5s;
 }
 
 *::-webkit-scrollbar {
-    width: 7px;
-    scroll-behavior: smooth;
+  width: 7px;
+  scroll-behavior: smooth;
 }
 
 *::-webkit-scrollbar-track {
-    background: var(--background-dark);
+  background: var(--background-dark);
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: var(--secondary-color);
-    border-radius: 5px;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+}
+
+
+@keyframes shine {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.button-skeleton {
+  width: 100%;
+  height: 45px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 37%, #f0f0f0 63%);
+  background-size: 400% 100%;
+  animation: shine 1.4s ease infinite;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+.input-skeleton {
+  width: 100%;
+  height: 40px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 37%, #f0f0f0 63%);
+  background-size: 400% 100%;
+  animation: shine 1.4s ease infinite;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+.error-fields {
+  padding-left: 1.3rem;
+}
+
+.error-fields>* {
+  text-align: left;
+  line-height: 3ch;
+  color: lightcoral;
+  font-size: small;
+  margin: auto;
+  width: 100%;
+}
+
+input:disabled {
+  background-color: var(--neutral-mutted-color);
+  cursor: not-allowed;
+}
+
+input:disabled:hover {
+  background-color: var(--neutral-mutted-color);
 }

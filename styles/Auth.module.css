@@ -1,185 +1,173 @@
 .auth_contain {
-    min-height: 75vh;
-    color: white;
-    flex-direction: row;
-    justify-content: space-evenly;
-    padding-top: 1rem;
+  min-height: 75vh;
+  color: white;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 1rem;
 }
 
 .auth_header {
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    margin-bottom: 2rem;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .auth_header img,
 .auth_header h1 {
-    filter: drop-shadow(0 0 10px var(--primary-color));
+  filter: drop-shadow(0 0 10px var(--primary-color));
 }
-.auth_header h1{
-    padding: 0 2.7rem;
+
+.auth_header h1 {
+  padding: 0 2.7rem;
 }
+
 .auth_contain form {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
 }
 
 .auth_contain button,
 .submit {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .auth_contain input,
 .auth_contain button {
-    padding: 10px;
-    border-radius: 6px;
-    font-size: 1.2rem;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 1.2rem;
 }
 
 .login_contain {
-    flex-direction: column;
-    width: 350px;
-    box-shadow: 0 0 15px var(--primary-color);
-    padding: 2rem 1rem;
-    border-radius: 12px;
-    gap: 1rem;
-    background-color: rgba(22, 26, 44, 0.8);
+  flex-direction: column;
+  width: 350px;
+  max-width: 88%;
+  box-shadow: 0 0 15px var(--primary-color);
+  padding: 2rem 1rem;
+  border-radius: 12px;
+  gap: 1rem;
+  background-color: rgba(22, 26, 44, 0.8);
 }
 
 
 .register_modal {
-    width: 100%;
-    height: 100vh;
-    z-index: 101;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background-color: #333333b7;
+  width: 100%;
+  height: 100vh;
+  z-index: 101;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #333333b7;
+  color: #fff;
+  border: none;
+  outline: none;
 }
 
 .register_contain {
-    overflow-y: auto;
-    position: relative;
-    width: 432px;
-    height: auto;
-    margin: auto;
-    background-color: rgb(20, 59, 51);
-    border-radius: 12px;
-    gap: 1rem;
-    padding: 18px;
-    box-shadow: 0 0 15px #008a55;
+  overflow-y: auto;
+  position: relative;
+  width: 500px;
+  max-width: 88%;
+  height: auto;
+  margin: auto;
+  background-color: rgb(20, 59, 51);
+  border-radius: 12px;
+  gap: 1rem;
+  padding: 18px;
+  box-shadow: 0 0 15px #008a55;
 
 }
 
 .input_row {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .input_row input,
-.input_row span {
-    width: 49%;
-}
-
-.auth_contain span {
-    text-align: center;
-    color: lightcoral;
-    font-size: small;
-    margin: auto;
-    width: 100%;
+.input_row p {
+  width: 49%;
 }
 
 .password_contain {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .password_contain input {
-    width: calc(100% - 30px);
+  width: calc(100% - 30px);
 }
 
 .buttons_contain {
-    width: 100%;
-    justify-content: space-evenly;
+  width: 100%;
+  justify-content: space-evenly;
 }
 
 .buttons_contain button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .3rem;
-    width: 45%;
-    transition: all .5s;
-    color: #c5c5c5;
-    background-color: rgba(41, 41, 41, 0.363);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .3rem;
+  width: 45%;
+  transition: all .5s;
+  color: #c5c5c5;
+  background-color: #2929295d;
 }
 
 .buttons_contain button:hover {
-    background-color: rgb(41, 41, 41);
+  background-color: #292929;
 }
 
 .facebook {
-    border-radius: 100%;
-    background-color: blue;
-    padding: 2px .5px 0px;
+  border-radius: 100%;
+  background-color: blue;
+  padding: 2px .5px 0px;
 }
 
 .btn_signUp,
 .btn_signIn {
-    cursor: pointer;
-    transition: all .5s;
-    border: none;
-    color: #e0e0e0;
+  cursor: pointer;
+  transition: all .5s;
+  border: none;
+  color: #e0e0e0;
 }
 
 .btn_signUp {
-    background-color: #008a55;
-    border-bottom: solid 1px #e0e0e0b7;
+  background-color: #008a55;
+  border-bottom: solid 1px #e0e0e0b7;
 }
 
 .btn_signUp:hover {
-    background-color: #006941;
+  background-color: #006941;
 }
 
 .btn_signIn {
-    background-color: rgb(0, 86, 214);
+  background-color: #0056d6;
 }
 
 .btn_signIn:hover {
-    background-color: rgb(0, 73, 182);
+  background-color: #0049b6;
 }
 
 
 
 .btn_close {
-    width: 65%;
-    background-color: #810000d7;
-    color: #c5c5c5;
-    transition: all .5s;
+  width: 65%;
+  background-color: #810000d7;
+  color: #c5c5c5;
+  transition: all .5s;
 }
 
 .btn_close:hover {
-    background-color: #b30000;
-    color: #ececec;
+  background-color: #b30000;
+  color: #ececec;
 
 }
 
 @media (max-width: 785px) {
-    .auth_contain {
-        flex-direction: column;
-        justify-content: center;
-        margin-bottom: 4rem;
-    }
-}
-
-
-
-@media (max-width: 480px) {
-
-    .login_contain,
-    .register_contain {
-        width: 88%;
-
-    }
+  .auth_contain {
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 4rem;
+  }
 }

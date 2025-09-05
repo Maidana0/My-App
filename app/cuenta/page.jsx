@@ -1,14 +1,14 @@
 import Image from 'next/image'
 import styles from '@/styles/Auth.module.css'
-import dynamic from 'next/dynamic'
+import Login from '@/components/account/Login'
+import Register from '@/components/account/Register'
+import { AuthModalContextProvider } from '@/components/context/AuthModal'
 
 export const metadata = {
-  "title": "Iniciar Sesión",
+  title: "Iniciar Sesión",
   description: "Ingresa sesión con tu correo electronico y contraseña asignada en el registro!"
 }
 
-const Login = dynamic(() => import("@/components/account/Login"))
-const Register = dynamic(() => import("@/components/account/Register"),)
 
 export default async function Auth(props) {
   const searchParams = await props.searchParams;
@@ -24,11 +24,11 @@ export default async function Auth(props) {
         {fail ? <span style={{ maxWidth: "300px", fontSize: "1.3em", marginTop: "1rem" }}>{fail}</span> : ""}
       </div>
 
-
-      <Login styles={styles} />
-      {/* El login tiene un boton para abrir el modal de register */}
-      <Register styles={styles} />
-
+      <AuthModalContextProvider>
+        <Login styles={styles} />
+        {/* El login tiene un boton para abrir el modal de register */}
+        <Register styles={styles} />
+      </AuthModalContextProvider>
 
     </div>
   )

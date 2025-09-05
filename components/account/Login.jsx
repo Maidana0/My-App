@@ -1,24 +1,20 @@
 "use client"
-import Buttons from "./Buttons"
-import LoginForm from "./LoginForm"
-import { useRouter } from "next/navigation"
-
+import LoginForm from "./LoginForm";
+import Buttons from "./Buttons";
+import { UseAuthModalContext } from "../context/AuthModal";
 
 const Login = ({ styles }) => {
-
-  const router = useRouter()
-  const openModal = () => router.push("?registrarme")
+  const { openModal } = UseAuthModalContext()
 
   return (
     <div className={`d-flex ${styles.login_contain}`}>
-
-      <LoginForm styles={styles} router={router} />
-
+      <LoginForm styles={styles} />
 
       <Buttons styles={styles} button={{
-        handleClickModal: openModal, text: "Crear cuenta nueva", className: styles.btn_signUp
+        text: "Crear cuenta nueva",
+        className: styles.btn_signUp,
+        handleClickModal: openModal
       }} />
-
     </div>
   )
 }
